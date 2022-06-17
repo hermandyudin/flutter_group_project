@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genius_app/theme/dark_green_theme.dart';
+import 'package:flutter_group_project/parsing.dart';
+import 'package:flutter_group_project/theme/dark_green_theme.dart';
 
 import 'artist_page.dart';
 import 'favorite_page.dart';
