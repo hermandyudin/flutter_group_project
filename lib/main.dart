@@ -6,8 +6,7 @@ import 'artist_page.dart';
 import 'favorite_page.dart';
 
 void main() {
-  // runApp(const MyApp());
-  getLyrics(124123);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,9 +30,6 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
-const String artistPage = "Artist";
-const String favouritePage = "Favorite";
 
 class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> _pages;
