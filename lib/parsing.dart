@@ -50,3 +50,27 @@ Future<List<String>> getLyrics(int songId) async {
   }
   return lyrics;
 }
+
+Future<List<Song>> getSongs(int artistId) async{
+
+  final response1 = await http.get(
+      Uri.parse('https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=1&access_token=$access'));
+  final response2 = await http.get(
+      Uri.parse('https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=2&access_token=$access'));
+
+  var data1 = jsonDecode(response1.body);
+  var data2 = jsonDecode(response2.body);
+
+  var songs1 = data1['response']['songs'] as List;
+  var songs2 = data2['response']['songs'] as List;
+
+  List<Song> songs = [];
+  for(var json in songs1){
+    songs.add(Song.fromJson(json));
+  }
+  for(var json in songs2){
+    songs.add(Song.fromJson(json));
+  }
+
+  return songs;
+}
