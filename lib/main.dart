@@ -6,7 +6,8 @@ import 'artist_page.dart';
 import 'favorite_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  getLyrics(124123);
 }
 
 class MyApp extends StatelessWidget {
