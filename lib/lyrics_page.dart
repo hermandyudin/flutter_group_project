@@ -15,7 +15,6 @@ class LyricsStateful extends StatefulWidget {
 
 class LyricsPage extends State<LyricsStateful> {
   int id;
-
   LyricsPage(this.id);
 
   @override
@@ -33,8 +32,13 @@ class LyricsPage extends State<LyricsStateful> {
         child: ListView.builder(
             padding:
                 const EdgeInsets.only(top: 60, left: 8, right: 8, bottom: 40),
-            itemCount: lyrics.length,
+            itemCount: lyrics.length + 1,
             itemBuilder: (BuildContext context, int index) {
+              if(index == 0){
+                return Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                    child: IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back, color: Colors.white)));
+              }
               return Padding(
                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   child: Text(
