@@ -4,8 +4,7 @@ import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 
 import 'classes/artist.dart';
-
-List<Artist> artists = [];
+import 'main.dart';
 
 class ArtistStateful extends StatefulWidget {
   const ArtistStateful({Key? key}) : super(key: key);
@@ -15,12 +14,14 @@ class ArtistStateful extends StatefulWidget {
 }
 
 class ArtistPage extends State<ArtistStateful> {
+  final _suggestions = <Artist>[];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: const EdgeInsets.all(8),
         itemCount: artists.length,
         itemBuilder: (BuildContext context, int index) {
+          final alreadySaved = saved.contains(artists[index]);
           return GestureDetector(
               onTap: () => Navigator.push(
                   context,
@@ -35,8 +36,29 @@ class ArtistPage extends State<ArtistStateful> {
                   elevation: 10,
                   child: Padding(
                       padding: const EdgeInsets.only(
-                          left: 15, top: 15, bottom: 15, right: 15),
+                          left: 10, top: 15, bottom: 15, right: 15),
                       child: Row(children: [
+                        Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: IconButton(
+                                icon: Icon(
+                                  alreadySaved
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: alreadySaved ? Colors.red : null,
+                                  semanticLabel: alreadySaved
+                                      ? 'Remove from saved'
+                                      : 'Save',
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    if (alreadySaved) {
+                                      saved.remove(artists[index]);
+                                    } else {
+                                      saved.add(artists[index]);
+                                    }
+                                  });
+                                })),
                         Padding(
                             padding: const EdgeInsets.only(right: 15),
                             child: CircleAvatar(

@@ -3,6 +3,7 @@ import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/dark_green_theme.dart';
 
 import 'artist_page.dart';
+import 'classes/artist.dart';
 import 'favorite_page.dart';
 
 void main() {
@@ -30,6 +31,9 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+List<Artist> saved = [];
+List<Artist> artists = [];
 
 class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> _pages;
