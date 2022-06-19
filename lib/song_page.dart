@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 
@@ -36,7 +37,11 @@ class SongPage extends State<SongStateful> {
         itemCount: songs.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-              onTap: () => {},
+              onTap: () => {Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          LyricsStateful(id: songs[index].id))),},
               child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),

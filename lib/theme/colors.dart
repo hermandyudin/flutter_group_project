@@ -6,4 +6,5 @@ class CustomColors {
   static const black = Color(0xFF1C1C1C);
   static const lightBlack = Color(0xFF323232);
   static const white = Color(0xFFFFFFFF);
+  static const mint = Color(0xFF73D299);
 }
