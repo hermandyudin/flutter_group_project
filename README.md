@@ -1,16 +1,7 @@
 # genius_app
 
-A new Flutter project.
+A flutter app for searching for singers and their song lyrics
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+On the main page we have list of artists:
+![photo_2022-07-03_21-45-12](https://user-images.githubusercontent.com/48819685/177053273-9ea97884-c3db-48c8-93f1-e9854be4db28.jpg)
