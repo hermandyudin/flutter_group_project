@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 
 import 'classes/artist.dart';
-import 'dialog.dart';
+import 'check_connection_methods.dart';
 import 'main.dart';
 
 class ArtistStateful extends StatefulWidget {
@@ -24,7 +24,7 @@ class ArtistPage extends State<ArtistStateful> {
         backgroundColor: CustomColors.black,
         color: CustomColors.green,
         onRefresh: () {
-          checkConnection();
+          checkConnection(downloadData, context);
           return Future<void>.delayed(const Duration(seconds: 1));
         },
         child: ListView.builder(
@@ -86,16 +86,7 @@ class ArtistPage extends State<ArtistStateful> {
   @override
   void initState() {
     super.initState();
-    checkConnection();
-  }
-
-  void checkConnection() async {
-    bool result = await InternetConnectionChecker().hasConnection;
-    if (!result) {
-      buildDialog(context);
-    } else {
-      downloadData();
-    }
+    checkConnection(downloadData, context);
   }
 
   void downloadData() {

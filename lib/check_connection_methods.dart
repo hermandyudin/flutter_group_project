@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 void buildDialog(BuildContext context) {
   showDialog<String>(
@@ -20,4 +21,13 @@ void buildDialog(BuildContext context) {
       ],
     ),
   );
+}
+
+void checkConnection(Function refreshData, BuildContext context) async {
+  bool result = await InternetConnectionChecker().hasConnection;
+  if (!result) {
+    buildDialog(context);
+  } else {
+    refreshData();
+  }
 }
