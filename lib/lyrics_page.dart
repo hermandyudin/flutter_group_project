@@ -42,7 +42,7 @@ class LyricsPage extends State<LyricsStateful> {
               return Padding(
                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   child: Text(
-                    lyrics[index].toString(),
+                    lyrics[index - 1].toString(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: CustomColors.white,
