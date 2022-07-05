@@ -15,6 +15,13 @@ class CustomTheme {
             backgroundColor: CustomColors.lightBlack,
             selectedItemColor: CustomColors.green,
             unselectedItemColor: CustomColors.grey,
-            elevation: 10));
+            elevation: 10),
+    dialogTheme: const DialogTheme(
+      backgroundColor: CustomColors.black,
+      titleTextStyle: TextStyle(color: CustomColors.white, fontSize: 18, fontWeight: FontWeight.bold),
+      contentTextStyle: TextStyle(color: CustomColors.white, fontSize: 14)
+    ),
+    );
   }
+  
 }
