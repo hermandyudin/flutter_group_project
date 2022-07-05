@@ -5,6 +5,7 @@ import 'package:flutter_group_project/theme/colors.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import 'classes/artist.dart';
+import 'dialog.dart';
 import 'main.dart';
 
 class ArtistStateful extends StatefulWidget {
@@ -91,23 +92,7 @@ class ArtistPage extends State<ArtistStateful> {
   void checkConnection() async {
     bool result = await InternetConnectionChecker().hasConnection;
     if (!result) {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('No internet connection'),
-          content: const Text(
-              'Please, check your internet connection, and refresh the page'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text(
-                'OK',
-                style: TextStyle(color: CustomColors.green),
-              ),
-            ),
-          ],
-        ),
-      );
+      buildDialog(context);
     } else {
       downloadData();
     }
