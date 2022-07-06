@@ -4,6 +4,7 @@ import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 
+import 'check_connection_methods.dart';
 import 'classes/song.dart';
 
 List<Song> songs = [];
@@ -24,15 +25,27 @@ class SongPage extends State<SongStateful> {
 
   @override
   void initState() {
+    super.initState();
+    checkConnection(downloadData, context);
+  }
+
+  void downloadData() {
     Future<List<Song>> list = getSongs(id);
     list.then((value) => setState(() {
-          songs = value;
-        }));
+      songs = value;
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return RefreshIndicator(
+        backgroundColor: CustomColors.black,
+        color: CustomColors.green,
+        onRefresh: () {
+      checkConnection(downloadData, context);
+      return Future<void>.delayed(const Duration(seconds: 1));
+    },
+    child: ListView.builder(
         padding: const EdgeInsets.only(top: 40, left: 8, right: 8),
         itemCount: songs.length,
         itemBuilder: (BuildContext context, int index) {
@@ -73,6 +86,6 @@ class SongPage extends State<SongStateful> {
                               )
                             ])),
                       ]))));
-        });
+        }));
   }
 }
