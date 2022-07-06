@@ -4,6 +4,9 @@ import 'package:flutter_group_project/theme/dark_green_theme.dart';
 
 import 'artist_page.dart';
 import 'classes/artist.dart';
+import 'classes/song.dart';
+import 'favorite_artists_page.dart';
+import 'favorite_songs_page.dart';
 import 'favorite_page.dart';
 
 void main() {
@@ -33,7 +36,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-List<Artist> saved = [];
+List<Artist> savedArtists = [];
+List<Song> savedSongs = [];
 List<Artist> artists = [];
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -54,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _artist = const ArtistStateful();
-    _favorite = const FavoriteStateful();
+    _favorite = const FavoriteNewStateful();
     _pages = [_artist, _favorite];
     _currentPage = _artist;
     _selectedIndex = 0;

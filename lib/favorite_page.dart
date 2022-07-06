@@ -1,113 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_group_project/favorite_artists_page.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 
+import 'favorite_songs_page.dart';
 import 'main.dart';
 
-class FavoriteStateful extends StatefulWidget {
-  const FavoriteStateful({Key? key}) : super(key: key);
+class FavoriteNewStateful extends StatefulWidget {
+  const FavoriteNewStateful({Key? key}) : super(key: key);
 
   @override
-  State<FavoriteStateful> createState() => Favorite();
+  State<FavoriteNewStateful> createState() => FavoriteNew();
 }
 
-class Favorite extends State<FavoriteStateful> {
-  List filteredList = [];
+class FavoriteNew extends State<FavoriteNewStateful> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      Padding(
-          padding: EdgeInsets.all(20),
-          child: TextField(
-              style: TextStyle(color: CustomColors.green),
-              decoration: InputDecoration(
-                hintText: 'Search ',
-                hintStyle: TextStyle(
-                  fontSize: 16,
+    return Padding(
+        padding:
+            const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 15),
+        child: Column(children: <Widget>[
+          GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FavoriteArtistsStateful())),
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   color: CustomColors.green,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: CustomColors.green, width: 3.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: CustomColors.white, width: 1.0),
-                ),
-                prefixIcon: const Icon(
-                  Icons.search,
+                  elevation: 10,
+                  child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10, top: 15, bottom: 15, right: 15),
+                      child: Row(children: const [
+                        Padding(
+                            padding: EdgeInsets.only(right: 15),
+                            child: Icon(Icons.person)),
+                        Flexible(
+                          child: Text("FAV Artists",
+                              style: TextStyle(fontSize: 17)),
+                        )
+                      ])))),
+          GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FavoriteSongsStateful())),
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   color: CustomColors.green,
-                ),
-              ),
-              onChanged: (text) {
-                text = text.toLowerCase();
-                filter(text);
-              })),
-      Expanded(
-          child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: filteredList.length,
-              itemBuilder: (BuildContext context, int index) {
-                final alreadySaved = saved.contains(filteredList[index]);
-                return GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SongStateful(id: filteredList[index].id))),
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        color: CustomColors.green,
-                        elevation: 10,
-                        child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 15, bottom: 15, right: 15),
-                            child: Row(children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 15),
-                                  child: IconButton(
-                                      icon: Icon(
-                                        alreadySaved
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                        color: alreadySaved ? Colors.red : null,
-                                        semanticLabel: alreadySaved
-                                            ? 'Remove from saved'
-                                            : 'Save',
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          if (alreadySaved) {
-                                            saved.remove(filteredList[index]);
-                                          } else {
-                                            saved.add(filteredList[index]);
-                                          }
-                                        });
-                                      })),
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 15),
-                                  child: CircleAvatar(
-                                    radius: 20, // Image radius
-                                    backgroundImage: NetworkImage(
-                                        filteredList[index].imageUrl),
-                                  )),
-                              Flexible(
-                                  child: Text(filteredList[index].name,
-                                      style: const TextStyle(fontSize: 17))),
-                            ]))));
-              }))
-    ]);
-  }
-
-  void filter(String inputString) {
-    filteredList =
-        saved.where((i) => i.name.toLowerCase().contains(inputString)).toList();
-    setState(() {});
-  }
-
-  void initState() {
-    super.initState();
-    filteredList = saved;
+                  elevation: 10,
+                  child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10, top: 15, bottom: 15, right: 15),
+                      child: Row(children: const [
+                        Padding(
+                            padding: EdgeInsets.only(right: 15),
+                            child: Icon(Icons.music_note)),
+                        Flexible(
+                            child: Text("FAV Songs",
+                                style: TextStyle(fontSize: 17))),
+                      ])))),
+        ]));
   }
 }

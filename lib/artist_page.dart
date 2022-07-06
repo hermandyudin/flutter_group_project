@@ -30,10 +30,10 @@ class ArtistPage extends State<ArtistStateful> {
             },
             child: Column(children: <Widget>[
               Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: TextField(
                       style: TextStyle(color: CustomColors.green),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Search ',
                         hintStyle: TextStyle(
                           fontSize: 16,
@@ -47,7 +47,7 @@ class ArtistPage extends State<ArtistStateful> {
                           borderSide:
                               BorderSide(color: CustomColors.white, width: 1.0),
                         ),
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.search,
                           color: CustomColors.green,
                         ),
@@ -62,7 +62,7 @@ class ArtistPage extends State<ArtistStateful> {
                       itemCount: filteredList.length,
                       itemBuilder: (BuildContext context, int index) {
                         final alreadySaved =
-                            saved.contains(filteredList[index]);
+                            savedArtists.contains(filteredList[index]);
                         return GestureDetector(
                             onTap: () => Navigator.push(
                                 context,
@@ -100,10 +100,10 @@ class ArtistPage extends State<ArtistStateful> {
                                               onPressed: () {
                                                 setState(() {
                                                   if (alreadySaved) {
-                                                    saved.remove(
+                                                    savedArtists.remove(
                                                         filteredList[index]);
                                                   } else {
-                                                    saved.add(
+                                                    savedArtists.add(
                                                         filteredList[index]);
                                                   }
                                                 });
