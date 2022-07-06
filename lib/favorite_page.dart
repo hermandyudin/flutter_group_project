@@ -21,6 +21,7 @@ class FavoriteNew extends State<FavoriteNewStateful> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery. of(context). size. width;
     return Padding(
         padding:
             const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 15),
@@ -29,8 +30,8 @@ class FavoriteNew extends State<FavoriteNewStateful> {
             children: <Widget>[
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(160, 800),
-                  maximumSize: const Size(190, 800),
+                  minimumSize: Size((width-30) / 2, 800),
+                  maximumSize: Size((width-30) / 2, 800),
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
@@ -47,13 +48,11 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                     Text("FAV Artists",
                         style: TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
-          const Padding(
-            padding: EdgeInsets.only(left: 5, right: 5),
-          ),
+          Spacer(),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(160, 800),
-                  maximumSize: const Size(190, 800),
+                  minimumSize: Size((width-30) / 2, 800),
+                  maximumSize: Size((width-30) / 2, 800),
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
