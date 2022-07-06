@@ -1,3 +1,5 @@
+[![GitHub Super-Linter](https://github.com/hermandyudin/flutter_group_project/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 # Genious App
 
 A flutter app for searching for singers and their song lyrics
