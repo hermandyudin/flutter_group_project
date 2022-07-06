@@ -24,11 +24,13 @@ class FavoriteNew extends State<FavoriteNewStateful> {
     return Padding(
         padding:
             const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 15),
-        child: Row(children: <Widget>[
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(180, 800),
-                  maximumSize: const Size(180, 800),
+                  minimumSize: const Size(160, 800),
+                  maximumSize: const Size(190, 800),
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
@@ -45,11 +47,13 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                     Text("FAV Artists",
                         style: TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
-          Spacer(),
+          const Padding(
+            padding: EdgeInsets.only(left: 5, right: 5),
+          ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(180, 800),
-                  maximumSize: const Size(180, 800),
+                  minimumSize: const Size(160, 800),
+                  maximumSize: const Size(190, 800),
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
