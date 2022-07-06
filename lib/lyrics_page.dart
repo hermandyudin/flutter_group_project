@@ -17,6 +17,7 @@ class LyricsStateful extends StatefulWidget {
 
 class LyricsPage extends State<LyricsStateful> {
   int id;
+
   LyricsPage(this.id);
 
   @override
@@ -25,7 +26,6 @@ class LyricsPage extends State<LyricsStateful> {
     checkConnection(downloadData, context);
   }
 
-
   void downloadData() {
     Future<List<String>> list = getLyrics(id);
     list.then((value) => setState(() {
@@ -33,39 +33,46 @@ class LyricsPage extends State<LyricsStateful> {
         }));
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-        type: MaterialType.transparency,
-        child: RefreshIndicator(
-        backgroundColor: CustomColors.black,
-        color: CustomColors.green,
-        onRefresh: () {
-      checkConnection(downloadData, context);
-      return Future<void>.delayed(const Duration(seconds: 1));
-    },
-    child: ListView.builder(
-            padding:
-                const EdgeInsets.only(top: 60, left: 8, right: 8, bottom: 40),
-            itemCount: lyrics.length + 1,
-            itemBuilder: (BuildContext context, int index) {
-              if(index == 0){
-                return Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                    child: IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back, color: Colors.white)));
-              }
-              return Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                  child: Text(
-                    lyrics[index - 1].toString(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        color: CustomColors.white,
-                        fontSize: 13,
-                        fontWeight: FontWeight.normal,
-                        fontFamily: "montserrat"),
-                  ));
-            })));
+    return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: CustomColors.green,
+          child: const Icon(
+            Icons.arrow_back,
+            color: CustomColors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          heroTag: 'songPage',
+        ),
+        body: Material(
+            type: MaterialType.transparency,
+            child: RefreshIndicator(
+                backgroundColor: CustomColors.black,
+                color: CustomColors.green,
+                onRefresh: () {
+                  checkConnection(downloadData, context);
+                  return Future<void>.delayed(const Duration(seconds: 1));
+                },
+                child: ListView.builder(
+                    padding: const EdgeInsets.only(
+                        top: 60, left: 8, right: 8, bottom: 40),
+                    itemCount: lyrics.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                          padding: const EdgeInsets.only(
+                              top: 10, left: 10, right: 10),
+                          child: Text(
+                            lyrics[index].toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: CustomColors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: "montserrat"),
+                          ));
+                    }))));
   }
 }

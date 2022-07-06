@@ -30,7 +30,7 @@ class ArtistPage extends State<ArtistStateful> {
             },
             child: Column(children: <Widget>[
               Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: TextField(
                       style: TextStyle(color: CustomColors.green),
                       decoration: InputDecoration(

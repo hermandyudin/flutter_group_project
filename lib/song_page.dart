@@ -50,7 +50,9 @@ class SongPage extends State<SongStateful> {
         },
         heroTag: 'artistPage',
       ),
-      body: RefreshIndicator(
+      body: Hero(
+        tag: 'songPage',
+        child: RefreshIndicator(
           backgroundColor: CustomColors.black,
           color: CustomColors.green,
           onRefresh: () {
@@ -103,7 +105,7 @@ class SongPage extends State<SongStateful> {
                                     )
                                   ])),
                             ]))));
-              })),
+              })),)
     );
   }
 }
