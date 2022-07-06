@@ -32,10 +32,24 @@ class ArtistPage extends State<ArtistStateful> {
               Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextField(
+                      style: TextStyle(color: CustomColors.green),
                       decoration: InputDecoration(
                         hintText: 'Search ',
                         hintStyle: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
+                          color: CustomColors.green,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: CustomColors.green, width: 3.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: CustomColors.white, width: 1.0),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: CustomColors.green,
                         ),
                       ),
                       onChanged: (text) {
