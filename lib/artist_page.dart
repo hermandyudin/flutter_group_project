@@ -20,7 +20,7 @@ class ArtistPage extends State<ArtistStateful> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
+    return Hero(tag: 'artistPage', child: RefreshIndicator(
         backgroundColor: CustomColors.black,
         color: CustomColors.green,
         onRefresh: () {
@@ -74,13 +74,13 @@ class ArtistPage extends State<ArtistStateful> {
                                 child: CircleAvatar(
                                   radius: 20, // Image radius
                                   backgroundImage:
-                                      NetworkImage(artists[index].imageUrl),
+                                  NetworkImage(artists[index].imageUrl),
                                 )),
                             Flexible(
                                 child: Text(artists[index].name,
                                     style: const TextStyle(fontSize: 17))),
                           ]))));
-            }));
+            })));
   }
 
   @override
