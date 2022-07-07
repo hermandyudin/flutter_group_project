@@ -119,11 +119,13 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
                                                   backgroundImage: NetworkImage(
                                                       filteredList[index].imageUrl),
                                                 )),
-                                            Flexible(
+                                            Container(
+                                              width: 200,
+                                              child: Flexible(
                                                 child: Text(
                                                     filteredList[index].title,
                                                     style: const TextStyle(
-                                                        fontSize: 17))),
+                                                        fontSize: 17))),)
                                           ],
                                         ),
                                         IconButton(
