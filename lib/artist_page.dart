@@ -93,7 +93,7 @@ class ArtistPage extends State<ArtistStateful> {
                                                     ? Icons.favorite
                                                     : Icons.favorite_border,
                                                 color: alreadySaved
-                                                    ? Colors.red
+                                                    ? CustomColors.white
                                                     : null,
                                                 semanticLabel: alreadySaved
                                                     ? 'Remove from saved'
