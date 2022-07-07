@@ -12,7 +12,6 @@ import 'favorite_songs_page.dart';
 import 'favorite_page.dart';
 import 'localization.dart';
 
-
 List<Artist> savedArtists = [];
 List<Song> savedSongs = [];
 List<Artist> artists = [];
@@ -20,18 +19,17 @@ bool isEnglish = true;
 bool isDark = true;
 
 late SharedPreferences prefs;
-Future<void> setDefault() async{
-  if(prefs.getBool('isEnglish') == null){
+Future<void> setDefault() async {
+  if (prefs.getBool('isEnglish') == null) {
     prefs.setBool('isEnglish', true);
     prefs.setBool('isDark', true);
-  }
-  else{
+  } else {
     isEnglish = prefs.getBool("isEnglish")!;
     isDark = prefs.getBool("isDark")!;
   }
 }
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
   setDefault().then((value) => runApp(const MyApp()));
@@ -94,13 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (isDark) {
       isDark = false;
       Get.changeTheme(CustomTheme.lightTheme);
-<<<<<<< HEAD
     } else {
-=======
-      prefs.setBool('isDark', false);
-    }
-    else{
->>>>>>> 9abcb711f427b7b8e81f92b84689ec4b9d0505e8
       isDark = true;
       Get.changeTheme(CustomTheme.darkTheme);
       prefs.setBool('isDark', true);
