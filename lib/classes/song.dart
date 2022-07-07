@@ -18,4 +18,12 @@ class Song {
         json['url']
     );
   }
+
+  @override
+  int get hashCode => id;
+
+  @override
+  bool operator ==(Object other) {
+    return other is Song && id == other.id;
+  }
 }
