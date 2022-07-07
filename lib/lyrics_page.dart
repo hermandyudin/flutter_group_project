@@ -47,7 +47,7 @@ class LyricsPage extends State<LyricsStateful> {
           heroTag: 'songPage',
           child: const Icon(
             Icons.arrow_back,
-            color: CustomColors.black,
+            color: CustomColors.green,
           ),
         ),
         body: Material(

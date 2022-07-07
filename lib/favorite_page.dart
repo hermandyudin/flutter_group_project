@@ -24,7 +24,9 @@ class FavoriteNew extends State<FavoriteNewStateful> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery. of(context). size. width;
-    return Padding(
+    return Hero(
+        tag: 'favoritePage',
+        child: Padding(
         padding:
             const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 15),
         child: Row(
@@ -71,6 +73,6 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                     Text("FAV Songs".tr, textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
-        ]));
+        ])));
   }
 }
