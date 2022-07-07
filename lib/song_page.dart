@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
+import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
 
@@ -20,9 +21,11 @@ class SongStateful extends StatefulWidget {
 
 late Future<List<Song>> list;
 
-class SongPage extends State<SongStateful> {
+class SongPage extends State<SongStateful> with TickerProviderStateMixin {
   int id;
   List filteredList = [];
+  late AnimationController controller;
+  late Animation<Offset> offset;
 
   SongPage(this.id);
 
@@ -34,6 +37,12 @@ class SongPage extends State<SongStateful> {
     list = getSongs(id);
     searchText = "";
     checkConnection(() {}, context);
+
+    controller =
+        AnimationController(vsync:this, duration: Duration(seconds: 5));
+
+    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+        .animate(controller);
   }
 
   @override
@@ -108,11 +117,7 @@ class SongPage extends State<SongStateful> {
                                       onTap: () {
                                         int songId = filteredList[index].id;
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LyricsStateful(
-                                                        id: songId)));
+                                            context, SlideRightRoute(widget: LyricsStateful(id: songId)));
                                       },
                                       child: Card(
                                           shape: RoundedRectangleBorder(

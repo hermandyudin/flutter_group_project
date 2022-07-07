@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/parsing.dart';
+import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
@@ -15,8 +16,24 @@ class ArtistStateful extends StatefulWidget {
   State<ArtistStateful> createState() => ArtistPage();
 }
 
-class ArtistPage extends State<ArtistStateful> {
+class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
   List filteredList = [];
+  String searchString = "";
+
+  late AnimationController controller;
+  late Animation<Offset> offset;
+
+  @override
+  void initState() {
+    super.initState();
+    checkConnection(downloadData, context);
+
+    controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 5));
+
+    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+        .animate(controller);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +48,13 @@ class ArtistPage extends State<ArtistStateful> {
             },
             child: Column(children: <Widget>[
               Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                      style: TextStyle(color: CustomColors.green),
-                      decoration: const InputDecoration(
-                        hintText: 'Search ',
-                        hintStyle: TextStyle(
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                      initialValue: searchString,
+                      style: const TextStyle(color: CustomColors.green),
+                      decoration: InputDecoration(
+                        hintText: 'Search '.tr,
+                        hintStyle: const TextStyle(
                           fontSize: 16,
                           color: CustomColors.green,
                         ),
@@ -54,8 +72,8 @@ class ArtistPage extends State<ArtistStateful> {
                         ),
                       ),
                       onChanged: (text) {
-                        text = text.toLowerCase();
-                        filter(text);
+                        searchString = text.toLowerCase();
+                        filter(searchString);
                       })),
               Expanded(
                   child: ListView.builder(
@@ -67,8 +85,8 @@ class ArtistPage extends State<ArtistStateful> {
                         return GestureDetector(
                             onTap: () => Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => SongStateful(
+                                SlideRightRoute(
+                                    widget: SongStateful(
                                         id: filteredList[index].id))),
                             child: Card(
                                 shape: RoundedRectangleBorder(
@@ -124,12 +142,6 @@ class ArtistPage extends State<ArtistStateful> {
                                     ]))));
                       }))
             ])));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkConnection(downloadData, context);
   }
 
   void downloadData() {
