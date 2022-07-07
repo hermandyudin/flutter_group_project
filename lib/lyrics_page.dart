@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_group_project/main.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 
@@ -67,15 +68,25 @@ class LyricsPage extends State<LyricsStateful> {
                       return Padding(
                           padding: const EdgeInsets.only(
                               top: 10, left: 10, right: 10),
-                          child: Text(
-                            lyrics[index].toString(),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: CustomColors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: "montserrat"),
-                          ));
+                          child: isDark
+                              ? Text(
+                                  lyrics[index].toString(),
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      color: CustomColors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: "montserrat"),
+                                )
+                              : Text(
+                                  lyrics[index].toString(),
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      color: CustomColors.black,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: "montserrat"),
+                                ));
                     }))));
   }
 }
