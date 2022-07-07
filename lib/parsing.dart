@@ -13,6 +13,9 @@ const access =
 Future<Artist> getArtist(int id) async {
   final response = await http.get(Uri.parse('https://api.genius.com/artists/$id?access_token=$access'));
   var data = jsonDecode(response.body);
+  if(data["response"] == null){
+    return const Artist(-1, "a", "a");
+  }
   var required = data['response']['artist'];
   return Artist.fromJson(required);
 }

@@ -4,7 +4,6 @@ import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
 
-
 import 'check_connection_methods.dart';
 import 'classes/artist.dart';
 import 'main.dart';
@@ -138,7 +137,9 @@ class ArtistPage extends State<ArtistStateful> {
     for (int id = 16775; id <= 17000; ++id) {
       Future<Artist> art = getArtist(id);
       art.then((value) => setState(() {
-            artists.add(value);
+            if (value.id != -1) {
+              artists.add(value);
+            }
           }));
     }
     filteredList = artists;
