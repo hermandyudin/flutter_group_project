@@ -12,4 +12,12 @@ class Artist {
       json['image_url'] as String
     );
   }
+
+  @override
+  int get hashCode => id;
+
+  @override
+  bool operator ==(Object other) {
+    return other is Artist && id == other.id;
+  }
 }
