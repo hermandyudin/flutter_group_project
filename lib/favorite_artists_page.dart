@@ -24,9 +24,10 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
         child: const Card(
           margin: EdgeInsets.all(10),
           elevation: 10,
-          color: CustomColors.black,
+          color: Colors.transparent,
           child: ListTile(
             contentPadding: EdgeInsets.all(10),
+            tileColor: Colors.transparent,
           ),
         ),
       );
