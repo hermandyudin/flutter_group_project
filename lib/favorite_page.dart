@@ -49,7 +49,7 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                       color: Colors.black,
                       size: 40,
                     ),
-                    Text("FAV Artists".tr, textAlign: TextAlign.center,
+                    Text("Artists".tr, textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
           const Spacer(),
@@ -70,7 +70,7 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                       color: Colors.black,
                       size: 40,
                     ),
-                    Text("FAV Songs".tr, textAlign: TextAlign.center,
+                    Text("Songs".tr, textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
         ])));
