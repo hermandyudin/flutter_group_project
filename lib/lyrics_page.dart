@@ -36,6 +36,10 @@ class LyricsPage extends State<LyricsStateful> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("Genius App"),
+          automaticallyImplyLeading: false,
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pop(context);

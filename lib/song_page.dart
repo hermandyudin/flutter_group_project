@@ -44,6 +44,7 @@ class SongPage extends State<SongStateful> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Genius App"),
+          automaticallyImplyLeading: false,
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
