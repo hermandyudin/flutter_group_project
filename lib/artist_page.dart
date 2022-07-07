@@ -61,7 +61,7 @@ class ArtistPage extends State<ArtistStateful> {
                       padding: const EdgeInsets.all(8),
                       itemCount: filteredList.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final alreadySaved =
+                        final isAlreadySaved =
                             savedArtists.contains(filteredList[index]);
                         return GestureDetector(
                             onTap: () => Navigator.push(
@@ -87,19 +87,19 @@ class ArtistPage extends State<ArtistStateful> {
                                               const EdgeInsets.only(right: 15),
                                           child: IconButton(
                                               icon: Icon(
-                                                alreadySaved
+                                                isAlreadySaved
                                                     ? Icons.favorite
                                                     : Icons.favorite_border,
-                                                color: alreadySaved
+                                                color: isAlreadySaved
                                                     ? Colors.red
                                                     : null,
-                                                semanticLabel: alreadySaved
+                                                semanticLabel: isAlreadySaved
                                                     ? 'Remove from saved'
                                                     : 'Save',
                                               ),
                                               onPressed: () {
                                                 setState(() {
-                                                  if (alreadySaved) {
+                                                  if (isAlreadySaved) {
                                                     savedArtists.remove(
                                                         filteredList[index]);
                                                   } else {
@@ -147,5 +147,10 @@ class ArtistPage extends State<ArtistStateful> {
         .where((i) => i.name.toLowerCase().contains(inputString))
         .toList();
     setState(() {});
+  }
+
+  Future<bool> alreadySaved(int index) async {
+    final artist = await filteredList[index];
+    return savedArtists.contains(artist);
   }
 }
