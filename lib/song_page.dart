@@ -58,8 +58,8 @@ class SongPage extends State<SongStateful> {
         body: Hero(
             tag: 'songPage',
             child: RefreshIndicator(
-                backgroundColor: CustomColors.black,
-                color: CustomColors.green,
+                backgroundColor: CustomColors.green,
+                color: CustomColors.lightBlack,
                 onRefresh: () {
                   checkConnection(downloadData, context);
                   return Future<void>.delayed(const Duration(seconds: 1));

@@ -49,8 +49,8 @@ class LyricsPage extends State<LyricsStateful> {
         body: Material(
             type: MaterialType.transparency,
             child: RefreshIndicator(
-                backgroundColor: CustomColors.black,
-                color: CustomColors.green,
+                backgroundColor: CustomColors.green,
+                color: CustomColors.lightBlack,
                 onRefresh: () {
                   checkConnection(downloadData, context);
                   return Future<void>.delayed(const Duration(seconds: 1));
