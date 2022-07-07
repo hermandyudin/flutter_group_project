@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
-import 'package:flutter_group_project/theme/dark_green_theme.dart';
+import 'package:flutter_group_project/theme/theme.dart';
 import 'package:get/get.dart';
 import 'artist_page.dart';
 import 'classes/artist.dart';

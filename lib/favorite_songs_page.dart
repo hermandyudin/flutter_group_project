@@ -43,7 +43,6 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
           title: const Text("Genius App"),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: CustomColors.green,
           child: const Icon(
             Icons.arrow_back,
             color: CustomColors.black,

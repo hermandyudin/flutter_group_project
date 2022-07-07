@@ -46,14 +46,13 @@ class SongPage extends State<SongStateful> {
           title: const Text("Genius App"),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: CustomColors.green,
           onPressed: () {
             Navigator.pop(context);
           },
           heroTag: 'artistPage',
           child: const Icon(
             Icons.arrow_back,
-            color: CustomColors.black,
+            color: CustomColors.green,
           ),
         ),
         body: Hero(

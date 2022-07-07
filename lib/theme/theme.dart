@@ -21,6 +21,10 @@ class CustomTheme {
       titleTextStyle: TextStyle(color: CustomColors.white, fontSize: 18, fontWeight: FontWeight.bold),
       contentTextStyle: TextStyle(color: CustomColors.white, fontSize: 14)
     ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: CustomColors.lightBlack,
+        elevation: 10
+      )
     );
   }
 
@@ -42,6 +46,10 @@ class CustomTheme {
           titleTextStyle: TextStyle(color: CustomColors.black, fontSize: 18, fontWeight: FontWeight.bold),
           contentTextStyle: TextStyle(color: CustomColors.black, fontSize: 14)
       ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: CustomColors.white,
+            elevation: 10
+        )
     );
   }
 

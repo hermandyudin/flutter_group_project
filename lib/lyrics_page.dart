@@ -37,15 +37,14 @@ class LyricsPage extends State<LyricsStateful> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor: CustomColors.green,
-          child: const Icon(
-            Icons.arrow_back,
-            color: CustomColors.black,
-          ),
           onPressed: () {
             Navigator.pop(context);
           },
           heroTag: 'songPage',
+          child: const Icon(
+            Icons.arrow_back,
+            color: CustomColors.black,
+          ),
         ),
         body: Material(
             type: MaterialType.transparency,
