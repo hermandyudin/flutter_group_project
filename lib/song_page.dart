@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+import 'package:get/get.dart';
 
 import 'check_connection_methods.dart';
 import 'classes/song.dart';
@@ -46,14 +47,14 @@ class SongPage extends State<SongStateful> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: CustomColors.green,
-          child: const Icon(
-            Icons.arrow_back,
-            color: CustomColors.black,
-          ),
           onPressed: () {
             Navigator.pop(context);
           },
           heroTag: 'artistPage',
+          child: const Icon(
+            Icons.arrow_back,
+            color: CustomColors.black,
+          ),
         ),
         body: Hero(
             tag: 'songPage',
@@ -68,22 +69,22 @@ class SongPage extends State<SongStateful> {
                   Padding(
                       padding: EdgeInsets.all(20),
                       child: TextField(
-                          style: TextStyle(color: CustomColors.green),
-                          decoration: const InputDecoration(
-                            hintText: 'Search ',
-                            hintStyle: TextStyle(
+                          style: const TextStyle(color: CustomColors.green),
+                          decoration: InputDecoration(
+                            hintText: 'Search '.tr,
+                            hintStyle: const TextStyle(
                               fontSize: 16,
                               color: CustomColors.green,
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: CustomColors.green, width: 3.0),
                             ),
-                            focusedBorder: OutlineInputBorder(
+                            focusedBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: CustomColors.white, width: 1.0),
                             ),
-                            prefixIcon: Icon(
+                            prefixIcon: const Icon(
                               Icons.search,
                               color: CustomColors.green,
                             ),

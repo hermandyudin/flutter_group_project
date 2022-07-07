@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_group_project/favorite_artists_page.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+import 'package:get/get.dart';
+
 
 import 'favorite_songs_page.dart';
 import 'main.dart';
@@ -39,16 +41,16 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                       builder: (context) => FavoriteArtistsStateful())),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.person,
                       color: Colors.black,
                       size: 40,
                     ),
-                    Text("FAV Artists",
-                        style: TextStyle(fontSize: 17, color: Colors.black)),
+                    Text("FAV Artists".tr, textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
-          Spacer(),
+          const Spacer(),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   minimumSize: Size((width-30) / 2, 800),
@@ -60,14 +62,14 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                       builder: (context) => FavoriteSongsStateful())),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
+                  children:  [
+                    const Icon(
                       Icons.music_note,
                       color: Colors.black,
                       size: 40,
                     ),
-                    Text("FAV Songs",
-                        style: TextStyle(fontSize: 17, color: Colors.black)),
+                    Text("FAV Songs".tr, textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 17, color: Colors.black)),
                   ])),
         ]));
   }
