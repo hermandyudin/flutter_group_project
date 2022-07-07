@@ -18,6 +18,7 @@ class ArtistStateful extends StatefulWidget {
 
 class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
   List filteredList = [];
+  String searchString = "";
 
   late AnimationController controller;
   late Animation<Offset> offset;
@@ -47,9 +48,10 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
             },
             child: Column(children: <Widget>[
               Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                      style: TextStyle(color: CustomColors.green),
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                      initialValue: searchString,
+                      style: const TextStyle(color: CustomColors.green),
                       decoration: InputDecoration(
                         hintText: 'Search '.tr,
                         hintStyle: const TextStyle(
@@ -70,8 +72,8 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
                         ),
                       ),
                       onChanged: (text) {
-                        text = text.toLowerCase();
-                        filter(text);
+                        searchString = text.toLowerCase();
+                        filter(searchString);
                       })),
               Expanded(
                   child: ListView.builder(
