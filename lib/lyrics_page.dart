@@ -18,20 +18,15 @@ class LyricsStateful extends StatefulWidget {
 
 class LyricsPage extends State<LyricsStateful> {
   int id;
+  late Future<List<String>> list;
 
   LyricsPage(this.id);
 
   @override
   void initState() {
     super.initState();
-    checkConnection(downloadData, context);
-  }
-
-  void downloadData() {
-    Future<List<String>> list = getLyrics(id);
-    list.then((value) => setState(() {
-          lyrics = value;
-        }));
+    list = getLyrics(id);
+    checkConnection(() {}, context);
   }
 
   @override
@@ -57,36 +52,48 @@ class LyricsPage extends State<LyricsStateful> {
                 backgroundColor: CustomColors.green,
                 color: CustomColors.lightBlack,
                 onRefresh: () {
-                  checkConnection(downloadData, context);
+                  checkConnection(() {}, context);
                   return Future<void>.delayed(const Duration(seconds: 1));
                 },
-                child: ListView.builder(
-                    padding: const EdgeInsets.only(
-                        top: 60, left: 8, right: 8, bottom: 40),
-                    itemCount: lyrics.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
+                child: FutureBuilder(
+                  future: list,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      lyrics = snapshot.data;
+                      return ListView.builder(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 10, right: 10),
-                          child: isDark
-                              ? Text(
-                                  lyrics[index].toString(),
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: CustomColors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: "montserrat"),
-                                )
-                              : Text(
-                                  lyrics[index].toString(),
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: CustomColors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: "montserrat"),
-                                ));
-                    }))));
+                              top: 60, left: 8, right: 8, bottom: 40),
+                          itemCount: lyrics.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10, left: 10, right: 10),
+                                child: isDark
+                                    ? Text(
+                                        lyrics[index].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            color: CustomColors.white,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.normal,
+                                            fontFamily: "montserrat"),
+                                      )
+                                    : Text(
+                                        lyrics[index].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            color: CustomColors.black,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.normal,
+                                            fontFamily: "montserrat"),
+                                      ));
+                          });
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ))));
   }
 }
