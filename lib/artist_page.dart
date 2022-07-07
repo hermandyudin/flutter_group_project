@@ -23,8 +23,8 @@ class ArtistPage extends State<ArtistStateful> {
     return Hero(
         tag: 'artistPage',
         child: RefreshIndicator(
-            backgroundColor: CustomColors.black,
-            color: CustomColors.green,
+            backgroundColor: CustomColors.green,
+            color: CustomColors.lightBlack,
             onRefresh: () {
               checkConnection(downloadData, context);
               return Future<void>.delayed(const Duration(seconds: 1));
@@ -92,7 +92,7 @@ class ArtistPage extends State<ArtistStateful> {
                                                     ? Icons.favorite
                                                     : Icons.favorite_border,
                                                 color: isAlreadySaved
-                                                    ? Colors.red
+                                                    ? CustomColors.white
                                                     : null,
                                                 semanticLabel: isAlreadySaved
                                                     ? 'Remove from saved'
@@ -137,7 +137,9 @@ class ArtistPage extends State<ArtistStateful> {
     for (int id = 16775; id <= 17000; ++id) {
       Future<Artist> art = getArtist(id);
       art.then((value) => setState(() {
-            artists.add(value);
+            if (value.id != -1) {
+              artists.add(value);
+            }
           }));
     }
     filteredList = artists;

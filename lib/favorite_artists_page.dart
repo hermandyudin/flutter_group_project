@@ -24,9 +24,10 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
         child: const Card(
           margin: EdgeInsets.all(10),
           elevation: 10,
-          color: CustomColors.black,
+          color: Colors.transparent,
           child: ListTile(
             contentPadding: EdgeInsets.all(10),
+            tileColor: Colors.transparent,
           ),
         ),
       );
@@ -42,20 +43,20 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
           title: const Text("Genius App"),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: CustomColors.green,
-          child: const Icon(
-            Icons.arrow_back,
-            color: CustomColors.black,
-          ),
           onPressed: () {
             Navigator.pop(context);
           },
+          heroTag: 'favoritePage',
+          child: const Icon(
+            Icons.arrow_back,
+            color: CustomColors.green,
+          ),
         ),
         body: Column(children: <Widget>[
           Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: TextField(
-                  style: TextStyle(color: CustomColors.green),
+                  style: const TextStyle(color: CustomColors.green),
                   decoration: InputDecoration(
                     hintText: 'Search '.tr,
                     hintStyle: const TextStyle(
@@ -102,7 +103,7 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
                           elevation: 10,
                           child: Padding(
                               padding: const EdgeInsets.only(
-                                  left: 10, top: 15, bottom: 15, right: 15),
+                                  left: 20, top: 15, bottom: 15, right: 15),
                               child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -118,11 +119,13 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
                                               backgroundImage: NetworkImage(
                                                   filteredList[index].imageUrl),
                                             )),
-                                        Flexible(
+                                        Container(
+                                          width: 200,
+                                          child: Flexible(
                                             child: Text(
                                                 filteredList[index].name,
                                                 style: const TextStyle(
-                                                    fontSize: 17))),
+                                                    fontSize: 17))),)
                                       ],
                                     ),
                                     IconButton(

@@ -1,18 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
-import 'package:flutter_group_project/theme/dark_green_theme.dart';
+import 'package:flutter_group_project/theme/theme.dart';
 import 'package:get/get.dart';
 import 'artist_page.dart';
 import 'classes/artist.dart';
 import 'classes/song.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'favorite_artists_page.dart';
 import 'favorite_songs_page.dart';
 import 'favorite_page.dart';
 import 'localization.dart';
 
-void main() {
-  runApp(const MyApp());
+
+List<Artist> savedArtists = [];
+List<Song> savedSongs = [];
+List<Artist> artists = [];
+bool isEnglish = true;
+bool isDark = true;
+
+late SharedPreferences prefs;
+Future<void> setDefault() async{
+  if(prefs.getBool('isEnglish') == null){
+    prefs.setBool('isEnglish', true);
+    prefs.setBool('isDark', true);
+  }
+  else{
+    isEnglish = prefs.getBool("isEnglish")!;
+    isDark = prefs.getBool("isDark")!;
+  }
+}
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
+  setDefault().then((value) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,8 +44,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Genius App',
-      theme: CustomTheme.darkTheme,
-      locale: Locale('en', 'US'),
+      theme: isDark ? CustomTheme.darkTheme : CustomTheme.lightTheme,
+      locale: isEnglish ? Locale("en", "US") : Locale("ru", "RU"),
       translations: Messages(),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -39,12 +61,6 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
-List<Artist> savedArtists = [];
-List<Song> savedSongs = [];
-List<Artist> artists = [];
-bool isEnglish = true;
-bool isDark = true;
 
 class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> _pages;
@@ -63,10 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _changeLanguage() {
     if (isEnglish) {
       var locale = Locale('ru', 'Ru');
+      prefs.setBool('isEnglish', false);
       Get.updateLocale(locale);
       isEnglish = false;
     } else {
       var locale = Locale('en', 'US');
+      prefs.setBool('isEnglish', true);
       Get.updateLocale(locale);
       isEnglish = true;
     }
@@ -76,9 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
     if (isDark) {
       isDark = false;
       Get.changeTheme(CustomTheme.lightTheme);
+<<<<<<< HEAD
     } else {
+=======
+      prefs.setBool('isDark', false);
+    }
+    else{
+>>>>>>> 9abcb711f427b7b8e81f92b84689ec4b9d0505e8
       isDark = true;
       Get.changeTheme(CustomTheme.darkTheme);
+      prefs.setBool('isDark', true);
     }
   }
 
@@ -146,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green,
+        selectedItemColor: CustomColors.green,
         onTap: _onItemTapped,
       ),
     );

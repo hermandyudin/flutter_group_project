@@ -21,27 +21,35 @@ class CustomTheme {
       titleTextStyle: TextStyle(color: CustomColors.white, fontSize: 18, fontWeight: FontWeight.bold),
       contentTextStyle: TextStyle(color: CustomColors.white, fontSize: 14)
     ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: CustomColors.lightBlack,
+        elevation: 10
+      )
     );
   }
 
   static ThemeData get lightTheme {
     return ThemeData(
-      primaryColor: CustomColors.mint,
+      primaryColor: CustomColors.green,
       scaffoldBackgroundColor: CustomColors.white,
       fontFamily: 'Montserrat',
       appBarTheme: const AppBarTheme(
-          color: CustomColors.grey,
-          foregroundColor: CustomColors.mint),
+          color: CustomColors.white,
+          foregroundColor: CustomColors.green),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: CustomColors.grey,
-          selectedItemColor: CustomColors.mint,
+          backgroundColor: CustomColors.white,
+          selectedItemColor: CustomColors.green,
           unselectedItemColor: CustomColors.black,
           elevation: 10),
       dialogTheme: const DialogTheme(
-          backgroundColor: CustomColors.grey,
+          backgroundColor: CustomColors.white,
           titleTextStyle: TextStyle(color: CustomColors.black, fontSize: 18, fontWeight: FontWeight.bold),
           contentTextStyle: TextStyle(color: CustomColors.black, fontSize: 14)
       ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: CustomColors.white,
+            elevation: 10
+        )
     );
   }
 
