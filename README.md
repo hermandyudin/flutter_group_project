@@ -2,29 +2,46 @@
 
 # Genius App
 
-A flutter app for searching for singers and their song lyrics
+A flutter app for searching for singers and their song lyrics. Available on Web, IOS, and Android
 
-## Getting Started
+# List of screens
+- List of artists with the search
+- List of songs of the particular artist with the search
+- Screen with the lyrics of the particular song
+- Favorites page (Artists/Songs)
+- List of favorites artists
+- List of favorites songs
+- Settings
 
-### On the main page we have list of artists:
-
-
-![photo_2022-07-03_21-45-11](https://user-images.githubusercontent.com/48819685/177053277-9fe1a2c4-7ab6-4ca2-84c9-1d05e7652bd4.jpg)
-
-
-### If you click at artist you get list of his/her songs:
-
-
-![photo_2022-07-03_21-45-12](https://user-images.githubusercontent.com/48819685/177053273-9ea97884-c3db-48c8-93f1-e9854be4db28.jpg)
-
-
-### If you click at song you will get lyrics of the song that are parsed(!!!!!!) from the web page of genious api
-
-
-![photo_2022-07-03_21-45-11 (2)](https://user-images.githubusercontent.com/48819685/177053271-ed7f6c60-37a2-470b-ac29-05e39d45b8a3.jpg)
-
-
-### Also you can check all favorite artists by switching to favourite page on BottomBar
+# List of festures
+- Look through a list of artists
+- Look through a list of songs of a particular artists
+- Look through a lyrics of a particular song
+- Search for an artist or song
+- Save favorite artists and songs, or remove them from the list of favorites
+- Switch between light/night mode
+- Change language (English/Russian)
 
 
-![photo_2022-07-03_21-45-10](https://user-images.githubusercontent.com/48819685/177053275-9c5b54ec-7427-4af8-9415-21d0d48b8134.jpg)
+# Screenshots
+![1](https://user-images.githubusercontent.com/57557659/177858037-a96f9f3a-892e-4d4a-8308-2d099d8ebbd5.png)
+![2](https://user-images.githubusercontent.com/57557659/177858043-ea97c4ba-574f-4d94-81de-75244509b0b8.png)
+![3](https://user-images.githubusercontent.com/57557659/177858052-e42b81be-67b8-4082-ab55-bc6df43a44a9.png)
+![4](https://user-images.githubusercontent.com/57557659/177858056-2b283b6e-bcdb-468b-a67e-90e59b0cd5e7.png)
+![5](https://user-images.githubusercontent.com/57557659/177858061-df323137-e234-406b-8e3f-f3cf507d85a3.png)
+![6](https://user-images.githubusercontent.com/57557659/177858066-cc9fd0b0-a924-4069-b3cb-2f285fa9087f.png)
+![7](https://user-images.githubusercontent.com/57557659/177858071-89392e92-58c7-4663-b779-f4879c4ff1dc.png)
+![8](https://user-images.githubusercontent.com/57557659/177858082-e2bf610e-72d8-496a-9312-367d0e83f99a.png)
+
+# How to build:
+Android and IOS:
+1. Download the code
+2. Connect a device via cable
+3. Turn on developer's mode
+4. Upload the app on device using AndroidStudio
+
+Web:
+1. Download the code
+2. Choose the browser using AndroidStudio
+
+In the future there will be ready apps in the markets and the website
