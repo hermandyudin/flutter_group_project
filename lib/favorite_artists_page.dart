@@ -54,9 +54,9 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
         ),
         body: Column(children: <Widget>[
           Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: TextField(
-                  style: TextStyle(color: CustomColors.green),
+                  style: const TextStyle(color: CustomColors.green),
                   decoration: InputDecoration(
                     hintText: 'Search '.tr,
                     hintStyle: const TextStyle(
@@ -103,7 +103,7 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
                           elevation: 10,
                           child: Padding(
                               padding: const EdgeInsets.only(
-                                  left: 10, top: 15, bottom: 15, right: 15),
+                                  left: 20, top: 15, bottom: 15, right: 15),
                               child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
