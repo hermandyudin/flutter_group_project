@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/favorite_artists_page.dart';
+import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
@@ -15,10 +16,20 @@ class FavoriteNewStateful extends StatefulWidget {
   State<FavoriteNewStateful> createState() => FavoriteNew();
 }
 
-class FavoriteNew extends State<FavoriteNewStateful> {
+class FavoriteNew extends State<FavoriteNewStateful> with TickerProviderStateMixin {
+
+  late AnimationController controller;
+  late Animation<Offset> offset;
+
   @override
   void initState() {
     super.initState();
+
+    controller =
+        AnimationController(vsync:this, duration: Duration(seconds: 5));
+
+    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+        .animate(controller);
   }
 
   @override
@@ -39,8 +50,7 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => FavoriteArtistsStateful())),
+                  SlideRightRoute(widget: FavoriteArtistsStateful())),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -60,8 +70,7 @@ class FavoriteNew extends State<FavoriteNewStateful> {
                   primary: CustomColors.green),
               onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => FavoriteSongsStateful())),
+                  SlideRightRoute(widget: FavoriteSongsStateful())),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
