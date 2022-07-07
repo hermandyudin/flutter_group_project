@@ -60,25 +60,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _changeLanguage(){
-    if(isEnglish){
+  void _changeLanguage() {
+    if (isEnglish) {
       var locale = Locale('ru', 'Ru');
       Get.updateLocale(locale);
       isEnglish = false;
-    }
-    else{
+    } else {
       var locale = Locale('en', 'US');
       Get.updateLocale(locale);
       isEnglish = true;
     }
   }
 
-  void _changeTheme(){
-    if(isDark){
+  void _changeTheme() {
+    if (isDark) {
       isDark = false;
       Get.changeTheme(CustomTheme.lightTheme);
-    }
-    else{
+    } else {
       isDark = true;
       Get.changeTheme(CustomTheme.darkTheme);
     }
@@ -93,16 +91,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: CustomColors.green)),
             children: [
-              Padding(padding: const EdgeInsets.only(left: 10, right: 10), child:
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: CustomColors.green),
-                  onPressed: _changeLanguage,
-                  child: Text("Change Language".tr, style: const TextStyle(color: Colors.black)))),
-              Padding(padding: const EdgeInsets.only(left: 10, right: 10), child:
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: CustomColors.green),
-                  onPressed: _changeTheme,
-                  child: Text("Change Theme".tr, style: const TextStyle(color: Colors.black))))
+              Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: CustomColors.green),
+                      onPressed: _changeLanguage,
+                      child: Text("Change Language".tr,
+                          style: const TextStyle(color: Colors.black)))),
+              Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: CustomColors.green),
+                      onPressed: _changeTheme,
+                      child: Text("Change Theme".tr,
+                          style: const TextStyle(color: Colors.black))))
             ],
           );
         });

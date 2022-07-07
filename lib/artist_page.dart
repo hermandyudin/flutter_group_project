@@ -4,7 +4,6 @@ import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
 
-
 import 'check_connection_methods.dart';
 import 'classes/artist.dart';
 import 'main.dart';
@@ -35,21 +34,21 @@ class ArtistPage extends State<ArtistStateful> {
                   padding: EdgeInsets.all(20),
                   child: TextField(
                       style: TextStyle(color: CustomColors.green),
-                      decoration: InputDecoration(
-                        hintText: 'Search '.tr,
-                        hintStyle: const TextStyle(
+                      decoration: const InputDecoration(
+                        hintText: 'Search ',
+                        hintStyle: TextStyle(
                           fontSize: 16,
                           color: CustomColors.green,
                         ),
-                        enabledBorder: const OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: CustomColors.green, width: 3.0),
                         ),
-                        focusedBorder: const OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: CustomColors.white, width: 1.0),
                         ),
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.search,
                           color: CustomColors.green,
                         ),
@@ -149,10 +148,5 @@ class ArtistPage extends State<ArtistStateful> {
         .where((i) => i.name.toLowerCase().contains(inputString))
         .toList();
     setState(() {});
-  }
-
-  Future<bool> alreadySaved(int index) async {
-    final artist = await filteredList[index];
-    return savedArtists.contains(artist);
   }
 }
