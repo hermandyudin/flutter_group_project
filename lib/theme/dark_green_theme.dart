@@ -23,5 +23,26 @@ class CustomTheme {
     ),
     );
   }
-  
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+      primaryColor: CustomColors.mint,
+      scaffoldBackgroundColor: CustomColors.white,
+      fontFamily: 'Montserrat',
+      appBarTheme: const AppBarTheme(
+          color: CustomColors.grey,
+          foregroundColor: CustomColors.mint),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: CustomColors.grey,
+          selectedItemColor: CustomColors.mint,
+          unselectedItemColor: CustomColors.black,
+          elevation: 10),
+      dialogTheme: const DialogTheme(
+          backgroundColor: CustomColors.grey,
+          titleTextStyle: TextStyle(color: CustomColors.black, fontSize: 18, fontWeight: FontWeight.bold),
+          contentTextStyle: TextStyle(color: CustomColors.black, fontSize: 14)
+      ),
+    );
+  }
+
 }

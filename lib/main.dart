@@ -73,6 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void _changeTheme(){
+    if(isDark){
+      isDark = false;
+      Get.changeTheme(CustomTheme.lightTheme);
+    }
+    else{
+      isDark = true;
+      Get.changeTheme(CustomTheme.darkTheme);
+    }
+  }
+
   void _showSettings() {
     showDialog<String>(
         context: context,
@@ -90,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(padding: const EdgeInsets.only(left: 10, right: 10), child:
               ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: CustomColors.green),
-                  onPressed: (){},
+                  onPressed: _changeTheme,
                   child: Text("Change Theme".tr, style: const TextStyle(color: Colors.black))))
             ],
           );
