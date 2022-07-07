@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 void buildDialog(BuildContext context) {
   showDialog<String>(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      title: const Text('No internet connection'),
-      content: const Text(
-          'Please, check your internet connection, and refresh the page'),
+      title: Text('No internet connection'.tr),
+      content: Text(
+          'Please, check your internet connection, and refresh the page'.tr),
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.pop(context, 'OK'),

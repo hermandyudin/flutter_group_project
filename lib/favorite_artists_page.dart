@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+import 'package:get/get.dart';
 
 import 'main.dart';
 
@@ -55,21 +56,21 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
               padding: EdgeInsets.all(20),
               child: TextField(
                   style: TextStyle(color: CustomColors.green),
-                  decoration: const InputDecoration(
-                    hintText: 'Search ',
-                    hintStyle: TextStyle(
+                  decoration: InputDecoration(
+                    hintText: 'Search '.tr,
+                    hintStyle: const TextStyle(
                       fontSize: 16,
                       color: CustomColors.green,
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide:
                           BorderSide(color: CustomColors.green, width: 3.0),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide:
                           BorderSide(color: CustomColors.white, width: 1.0),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search,
                       color: CustomColors.green,
                     ),

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/parsing.dart';
+import 'package:flutter_group_project/theme/colors.dart';
 import 'package:flutter_group_project/theme/dark_green_theme.dart';
-
+import 'package:get/get.dart';
 import 'artist_page.dart';
 import 'classes/artist.dart';
 import 'classes/song.dart';
 import 'favorite_artists_page.dart';
 import 'favorite_songs_page.dart';
 import 'favorite_page.dart';
+import 'localization.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Genius App',
       theme: CustomTheme.darkTheme,
+      locale: Locale('en', 'US'),
+      translations: Messages(),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -39,6 +43,8 @@ class MyHomePage extends StatefulWidget {
 List<Artist> savedArtists = [];
 List<Song> savedSongs = [];
 List<Artist> artists = [];
+bool isEnglish = true;
+bool isDark = true;
 
 class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> _pages;
@@ -52,6 +58,43 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
       _currentPage = _pages[_selectedIndex];
     });
+  }
+
+  void _changeLanguage(){
+    if(isEnglish){
+      var locale = Locale('ru', 'Ru');
+      Get.updateLocale(locale);
+      isEnglish = false;
+    }
+    else{
+      var locale = Locale('en', 'US');
+      Get.updateLocale(locale);
+      isEnglish = true;
+    }
+  }
+
+  void _showSettings() {
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: Text('Settings'.tr,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: CustomColors.green)),
+            children: [
+              Padding(padding: const EdgeInsets.only(left: 10, right: 10), child:
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: CustomColors.green),
+                  onPressed: _changeLanguage,
+                  child: Text("Change Language".tr, style: const TextStyle(color: Colors.black)))),
+              Padding(padding: const EdgeInsets.only(left: 10, right: 10), child:
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: CustomColors.green),
+                  onPressed: (){},
+                  child: Text("Change Theme".tr, style: const TextStyle(color: Colors.black))))
+            ],
+          );
+        });
   }
 
   @override
@@ -69,17 +112,22 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Genius App"),
+        actions: [
+          IconButton(
+              onPressed: _showSettings,
+              icon: const Icon(Icons.settings, color: CustomColors.green))
+        ],
       ),
       body: _currentPage,
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: 'Home'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
+            icon: const Icon(Icons.favorite),
+            label: 'Favorite'.tr,
           ),
         ],
         currentIndex: _selectedIndex,
