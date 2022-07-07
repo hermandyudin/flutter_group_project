@@ -70,7 +70,8 @@ class SongPage extends State<SongStateful> {
                       child: Column(children: <Widget>[
                         Padding(
                             padding: EdgeInsets.all(20),
-                            child: TextField(
+                            child: TextFormField(
+                                initialValue: searchText,
                                 style: const TextStyle(color: CustomColors.green),
                                 decoration: InputDecoration(
                                   hintText: 'Search '.tr,
@@ -104,14 +105,14 @@ class SongPage extends State<SongStateful> {
                                   final alreadySaved =
                                   savedSongs.contains(filteredList[index]);
                                   return GestureDetector(
-                                      onTap: () => {
+                                      onTap: () {
+                                        int songId = filteredList[index].id;
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     LyricsStateful(
-                                                        id: filteredList[index]
-                                                            .id))),
+                                                        id: songId)));
                                       },
                                       child: Card(
                                           shape: RoundedRectangleBorder(
