@@ -13,7 +13,7 @@ A flutter app for searching for singers and their song lyrics. Available on Web,
 - List of favorites songs
 - Settings
 
-# List of festures
+# List of features
 - Look through a list of artists
 - Look through a list of songs of a particular artists
 - Look through a lyrics of a particular song
