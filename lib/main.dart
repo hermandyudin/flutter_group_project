@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:flutter_group_project/theme/theme.dart';
 // ignore: depend_on_referenced_packages
@@ -13,6 +14,8 @@ import 'localization.dart';
 
 List<Artist> savedArtists = [];
 List<Song> savedSongs = [];
+List<String> savedArtistsId = [];
+List<String> savedSongsId = [];
 List<Artist> artists = [];
 bool isEnglish = true;
 bool isDark = true;
@@ -22,10 +25,30 @@ Future<void> setDefault() async {
   if (prefs.getBool('isEnglish') == null) {
     prefs.setBool('isEnglish', true);
     prefs.setBool('isDark', true);
+    prefs.setStringList("artists", []);
+    prefs.setStringList("songs", []);
   } else {
     isEnglish = prefs.getBool("isEnglish")!;
     isDark = prefs.getBool("isDark")!;
+
+    savedArtistsId = prefs.getStringList("artists")!;
+    savedSongsId = prefs.getStringList("songs")!;
+
+    for (String id in savedArtistsId) {
+      Artist toAdd = await getArtist(int.parse(id));
+      savedArtists.add(toAdd);
+    }
+
+    for (String id in savedSongsId) {
+      Song toAdd = await getSong(int.parse(id));
+      savedSongs.add(toAdd);
+    }
   }
+}
+
+void updateSaved() {
+  prefs.setStringList("artists", savedArtistsId);
+  prefs.setStringList("songs", savedSongsId);
 }
 
 void main() async {

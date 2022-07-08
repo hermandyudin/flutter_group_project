@@ -176,12 +176,21 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                                                                       savedSongs
                                                                           .remove(
                                                                               filteredList[index]);
+                                                                      savedSongsId.remove(filteredList[
+                                                                              index]
+                                                                          .id
+                                                                          .toString());
                                                                     } else {
                                                                       savedSongs.add(
                                                                           filteredList[
                                                                               index]);
+                                                                      savedSongsId.add(filteredList[
+                                                                              index]
+                                                                          .id
+                                                                          .toString());
                                                                     }
                                                                   });
+                                                                  updateSaved();
                                                                 })),
                                                         Padding(
                                                             padding:

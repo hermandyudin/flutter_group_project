@@ -134,12 +134,21 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
                                                         savedArtists.remove(
                                                             filteredList[
                                                                 index]);
+                                                        savedArtistsId.remove(
+                                                            filteredList[index]
+                                                                .id
+                                                                .toString());
                                                       } else {
                                                         savedArtists.add(
                                                             filteredList[
                                                                 index]);
+                                                        savedArtistsId.add(
+                                                            filteredList[index]
+                                                                .id
+                                                                .toString());
                                                       }
                                                     });
+                                                    updateSaved();
                                                   })),
                                           Padding(
                                               padding: const EdgeInsets.only(
