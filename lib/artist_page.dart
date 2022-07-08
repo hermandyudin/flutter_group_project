@@ -3,6 +3,7 @@ import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
@@ -55,102 +56,108 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
               checkConnection(downloadData, context);
               return Future<void>.delayed(const Duration(seconds: 1));
             },
-            child: Column(children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: TextFormField(
-                      initialValue: searchString,
-                      style: const TextStyle(color: CustomColors.green),
-                      decoration: InputDecoration(
-                        hintText: 'Search '.tr,
-                        hintStyle: const TextStyle(
-                          fontSize: 16,
-                          color: CustomColors.green,
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: CustomColors.green, width: 3.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: CustomColors.white, width: 1.0),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: CustomColors.green,
-                        ),
-                      ),
-                      onChanged: (text) {
-                        searchString = text.toLowerCase();
-                        filter(searchString);
-                      })),
-              Expanded(
-                  child: ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: filteredList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final isAlreadySaved =
-                            alreadySaved(filteredList[index]);
-                        return GestureDetector(
-                            onTap: () => Navigator.push(
-                                context,
-                                SlideRightRoute(
-                                    widget: SongStateful(
-                                        id: filteredList[index].id))),
-                            child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: CustomColors.green,
-                                elevation: 10,
-                                child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10,
-                                        top: 15,
-                                        bottom: 15,
-                                        right: 15),
-                                    child: Row(children: [
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: IconButton(
-                                              icon: Icon(
-                                                isAlreadySaved
-                                                    ? Icons.favorite
-                                                    : Icons.favorite_border,
-                                                color: isAlreadySaved
-                                                    ? CustomColors.white
-                                                    : null,
-                                                semanticLabel: isAlreadySaved
-                                                    ? 'Remove from saved'
-                                                    : 'Save',
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  if (isAlreadySaved) {
-                                                    savedArtists.remove(
-                                                        filteredList[index]);
-                                                  } else {
-                                                    savedArtists.add(
-                                                        filteredList[index]);
-                                                  }
-                                                });
-                                              })),
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: CircleAvatar(
-                                            radius: 20, // Image radius
-                                            backgroundImage: NetworkImage(
-                                                filteredList[index].imageUrl),
-                                          )),
-                                      Flexible(
-                                          child: Text(filteredList[index].name,
-                                              style: const TextStyle(
-                                                  fontSize: 17))),
-                                    ]))));
-                      }))
-            ])));
+            child: Card(
+                color: isDark ? CustomColors.black : CustomColors.white,
+                child: Column(children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: TextFormField(
+                          initialValue: searchString,
+                          style: const TextStyle(color: CustomColors.green),
+                          decoration: InputDecoration(
+                            hintText: 'Search '.tr,
+                            hintStyle: const TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.green,
+                            ),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: CustomColors.green, width: 3.0),
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: CustomColors.white, width: 1.0),
+                            ),
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              color: CustomColors.green,
+                            ),
+                          ),
+                          onChanged: (text) {
+                            searchString = text.toLowerCase();
+                            filter(searchString);
+                          })),
+                  Expanded(
+                      child: ListView.builder(
+                          padding: const EdgeInsets.all(8),
+                          itemCount: filteredList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final isAlreadySaved =
+                                alreadySaved(filteredList[index]);
+                            return GestureDetector(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    SlideRightRoute(
+                                        widget: SongStateful(
+                                            id: filteredList[index].id))),
+                                child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    color: CustomColors.green,
+                                    elevation: 10,
+                                    child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10,
+                                            top: 15,
+                                            bottom: 15,
+                                            right: 15),
+                                        child: Row(children: [
+                                          Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 15),
+                                              child: IconButton(
+                                                  icon: Icon(
+                                                    isAlreadySaved
+                                                        ? Icons.favorite
+                                                        : Icons.favorite_border,
+                                                    color: isAlreadySaved
+                                                        ? CustomColors.white
+                                                        : null,
+                                                    semanticLabel: isAlreadySaved
+                                                        ? 'Remove from saved'
+                                                        : 'Save',
+                                                  ),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      if (isAlreadySaved) {
+                                                        savedArtists.remove(
+                                                            filteredList[
+                                                                index]);
+                                                      } else {
+                                                        savedArtists.add(
+                                                            filteredList[
+                                                                index]);
+                                                      }
+                                                    });
+                                                  })),
+                                          Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 15),
+                                              child: CircleAvatar(
+                                                radius: 20, // Image radius
+                                                backgroundImage: NetworkImage(
+                                                    filteredList[index]
+                                                        .imageUrl),
+                                              )),
+                                          Flexible(
+                                              child: Text(
+                                                  filteredList[index].name,
+                                                  style: const TextStyle(
+                                                      fontSize: 17))),
+                                        ]))));
+                          }))
+                ]))));
   }
 
   void downloadData() {
