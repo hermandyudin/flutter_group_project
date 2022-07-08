@@ -32,6 +32,7 @@ void main() {
     );
   });
 
+  var numberLessThan16775 = Random().nextInt(16774);
   test('test 3', () async {
     final artist = await getArtist(16774);
 
@@ -40,11 +41,14 @@ void main() {
     expect(artist.imageUrl, 'a');
   });
 
-  var numberBiggerThan16775 = 16775 + Random().nextInt(1300);
+  var numberBiggerThan16774 = 16775 + Random().nextInt(1300);
 
   test('test 4', () async {
-    final artist = await getArtist(numberBiggerThan16775);
-
-    expect(artist.id, numberBiggerThan16775);
+    final artist = await getArtist(numberBiggerThan16774);
+    var idOfArtist = -1;
+    if (artist.name != "a") {
+      idOfArtist = numberBiggerThan16774;
+    }
+    expect(artist.id, idOfArtist);
   });
 }
