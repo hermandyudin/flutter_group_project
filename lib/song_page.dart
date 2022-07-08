@@ -78,144 +78,156 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                         return Future<void>.delayed(const Duration(seconds: 1));
                       },
                       child: Card(
-                        color: isDark ? CustomColors.black : CustomColors.white,
-                      child: Column(children: <Widget>[
-                        Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: TextFormField(
-                                initialValue: searchText,
-                                style:
-                                    const TextStyle(color: CustomColors.green),
-                                decoration: InputDecoration(
-                                  hintText: 'Search '.tr,
-                                  hintStyle: const TextStyle(
-                                    fontSize: 16,
-                                    color: CustomColors.green,
-                                  ),
-                                  enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: CustomColors.green, width: 3.0),
-                                  ),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: CustomColors.white, width: 1.0),
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.search,
-                                    color: CustomColors.green,
-                                  ),
-                                ),
-                                onChanged: (text) {
-                                  searchText = text.toLowerCase();
-                                  _onChanged(searchText, snapshot.data);
-                                })),
-                        Expanded(
-                            child: SizedBox(
-                                height: MediaQuery.of(context).size.height,
-                                child: ListView.builder(
-                                padding: const EdgeInsets.only(
-                                    top: 40, left: 8, right: 8),
-                                itemCount: filteredList.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final alreadySaved =
-                                      savedSongs.contains(filteredList[index]);
-                                  return GestureDetector(
-                                      onTap: () {
-                                        int songId = filteredList[index].id;
-                                        Navigator.push(
-                                            context,
-                                            SlideRightRoute(
-                                                widget: LyricsStateful(
-                                                    id: songId)));
-                                      },
-                                      child: Card(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                          ),
-                                          color: CustomColors.green,
-                                          elevation: 10,
-                                          child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 15,
-                                                  top: 15,
-                                                  bottom: 15,
-                                                  right: 15),
-                                              child: Row(children: [
-                                                Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            right: 15),
-                                                    child: IconButton(
-                                                        icon: Icon(
-                                                          alreadySaved
-                                                              ? Icons.favorite
-                                                              : Icons
-                                                                  .favorite_border,
-                                                          color: alreadySaved
-                                                              ? CustomColors
-                                                                  .white
-                                                              : null,
-                                                          semanticLabel:
-                                                              alreadySaved
-                                                                  ? 'Remove from saved'
-                                                                  : 'Save',
-                                                        ),
-                                                        onPressed: () {
-                                                          setState(() {
-                                                            if (alreadySaved) {
-                                                              savedSongs.remove(
-                                                                  filteredList[
-                                                                      index]);
-                                                            } else {
-                                                              savedSongs.add(
-                                                                  filteredList[
-                                                                      index]);
-                                                            }
-                                                          });
-                                                        })),
-                                                Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            right: 15),
-                                                    child: CircleAvatar(
-                                                      radius:
-                                                          20, // Image radius
-                                                      backgroundImage:
-                                                          NetworkImage(
-                                                              filteredList[
-                                                                      index]
-                                                                  .imageUrl),
-                                                    )),
-                                                Flexible(
-                                                    child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                      Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 5),
-                                                          child: Text(
-                                                              filteredList[
-                                                                      index]
-                                                                  .title,
-                                                              style:
-                                                                  const TextStyle(
-                                                                      fontSize:
-                                                                          17))),
-                                                      Text(
-                                                        filteredList[index]
-                                                            .artistNames,
-                                                        style: const TextStyle(
-                                                            fontSize: 10),
-                                                      )
-                                                    ])),
-                                              ]))));
-                                }))),
-                      ]))));
+                          color:
+                              isDark ? CustomColors.black : CustomColors.white,
+                          child: Column(children: <Widget>[
+                            Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: TextFormField(
+                                    initialValue: searchText,
+                                    style: const TextStyle(
+                                        color: CustomColors.green),
+                                    decoration: InputDecoration(
+                                      hintText: 'Search '.tr,
+                                      hintStyle: const TextStyle(
+                                        fontSize: 16,
+                                        color: CustomColors.green,
+                                      ),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: CustomColors.green,
+                                            width: 3.0),
+                                      ),
+                                      focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: CustomColors.white,
+                                            width: 1.0),
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: CustomColors.green,
+                                      ),
+                                    ),
+                                    onChanged: (text) {
+                                      searchText = text.toLowerCase();
+                                      _onChanged(searchText, snapshot.data);
+                                    })),
+                            Expanded(
+                                child: SizedBox(
+                                    height: MediaQuery.of(context).size.height,
+                                    child: ListView.builder(
+                                        padding: const EdgeInsets.only(
+                                            top: 40, left: 8, right: 8),
+                                        itemCount: filteredList.length,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          final alreadySaved = savedSongs
+                                              .contains(filteredList[index]);
+                                          return GestureDetector(
+                                              onTap: () {
+                                                int songId =
+                                                    filteredList[index].id;
+                                                Navigator.push(
+                                                    context,
+                                                    SlideRightRoute(
+                                                        widget: LyricsStateful(
+                                                            id: songId)));
+                                              },
+                                              child: Card(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  color: CustomColors.green,
+                                                  elevation: 10,
+                                                  child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 15,
+                                                              top: 15,
+                                                              bottom: 15,
+                                                              right: 15),
+                                                      child: Row(children: [
+                                                        Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    right: 15),
+                                                            child: IconButton(
+                                                                icon: Icon(
+                                                                  alreadySaved
+                                                                      ? Icons
+                                                                          .favorite
+                                                                      : Icons
+                                                                          .favorite_border,
+                                                                  color: alreadySaved
+                                                                      ? CustomColors
+                                                                          .white
+                                                                      : null,
+                                                                  semanticLabel:
+                                                                      alreadySaved
+                                                                          ? 'Remove from saved'
+                                                                          : 'Save',
+                                                                ),
+                                                                onPressed: () {
+                                                                  setState(() {
+                                                                    if (alreadySaved) {
+                                                                      savedSongs
+                                                                          .remove(
+                                                                              filteredList[index]);
+                                                                    } else {
+                                                                      savedSongs.add(
+                                                                          filteredList[
+                                                                              index]);
+                                                                    }
+                                                                  });
+                                                                })),
+                                                        Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    right: 15),
+                                                            child: CircleAvatar(
+                                                              radius:
+                                                                  20, // Image radius
+                                                              backgroundImage:
+                                                                  NetworkImage(
+                                                                      filteredList[
+                                                                              index]
+                                                                          .imageUrl),
+                                                            )),
+                                                        Flexible(
+                                                            child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                              Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .only(
+                                                                      bottom:
+                                                                          5),
+                                                                  child: Text(
+                                                                      filteredList[
+                                                                              index]
+                                                                          .title,
+                                                                      style: const TextStyle(
+                                                                          fontSize:
+                                                                              17))),
+                                                              Text(
+                                                                filteredList[
+                                                                        index]
+                                                                    .artistNames,
+                                                                style:
+                                                                    const TextStyle(
+                                                                        fontSize:
+                                                                            10),
+                                                              )
+                                                            ])),
+                                                      ]))));
+                                        }))),
+                          ]))));
             } else {
               return const Center(
                 child: CircularProgressIndicator(),
