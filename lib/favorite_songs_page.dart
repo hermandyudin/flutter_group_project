@@ -34,6 +34,8 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
       );
     }, duration: const Duration(seconds: 1));
 
+    savedSongsId.remove(filteredList[index].id.toString());
+    updateSaved();
     filteredList.removeAt(index);
   }
 
