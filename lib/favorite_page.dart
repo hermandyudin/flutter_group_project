@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_group_project/favorite_artists_page.dart';
 import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
 import 'favorite_songs_page.dart';

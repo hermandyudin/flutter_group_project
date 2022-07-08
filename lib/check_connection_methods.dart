@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';

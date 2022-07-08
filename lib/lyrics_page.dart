@@ -13,6 +13,7 @@ class LyricsStateful extends StatefulWidget {
   const LyricsStateful({Key? key, required this.id}) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   State<LyricsStateful> createState() => LyricsPage(id);
 }
 

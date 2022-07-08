@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:flutter_group_project/theme/theme.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 import 'artist_page.dart';
 import 'classes/artist.dart';
 import 'classes/song.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 import 'favorite_page.dart';
 import 'localization.dart';

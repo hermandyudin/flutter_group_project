@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
 import 'main.dart';

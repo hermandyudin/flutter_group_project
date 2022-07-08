@@ -3,6 +3,7 @@ import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
 import 'check_connection_methods.dart';
@@ -15,6 +16,7 @@ class SongStateful extends StatefulWidget {
   const SongStateful({Key? key, required this.id}) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   State<SongStateful> createState() => SongPage(id);
 }
 

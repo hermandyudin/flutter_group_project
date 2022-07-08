@@ -3,6 +3,7 @@ import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/slide_right_route.dart';
 import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
 import 'check_connection_methods.dart';
@@ -22,6 +23,14 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
 
   late AnimationController controller;
   late Animation<Offset> offset;
+
+  bool alreadySaved(Artist artist) {
+    if (savedArtists.contains(artist)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   void initState() {
@@ -81,7 +90,7 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
                       itemCount: filteredList.length,
                       itemBuilder: (BuildContext context, int index) {
                         final isAlreadySaved =
-                            savedArtists.contains(filteredList[index]);
+                            alreadySaved(filteredList[index]);
                         return GestureDetector(
                             onTap: () => Navigator.push(
                                 context,
