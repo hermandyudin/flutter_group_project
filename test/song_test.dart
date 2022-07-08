@@ -33,13 +33,19 @@ void main() {
   });
 
   var numberBiggerThan16775 = 16775 + Random().nextInt(1300);
-
   test('test 3', () async {
+    while ((await getArtist(numberBiggerThan16775)).id == -1) {
+      numberBiggerThan16775 = 16755 + Random().nextInt(1300);
+    }
+
     final songs = await getSongs(numberBiggerThan16775);
     expect(songs.length, isNotNaN);
   });
 
   test('test 4', () async {
+    while ((await getArtist(numberBiggerThan16775)).id == -1) {
+      numberBiggerThan16775 = 16755 + Random().nextInt(1300);
+    }
     final songs = await getSongs(numberBiggerThan16775);
     var songInList = songs[0];
     var songFromGetter = await getSong(songs[0].id);
@@ -47,6 +53,10 @@ void main() {
   });
 
   test('test 5', () async {
+    while ((await getArtist(numberBiggerThan16775)).id == -1) {
+      numberBiggerThan16775 = 16755 + Random().nextInt(1300);
+    }
+
     final songs = await getSongs(numberBiggerThan16775);
     var songInList = songs[0];
     var lyrics = getLyrics(songInList.id);
