@@ -11,9 +11,10 @@ const access =
     "dZF71iZC3WocTvpWzLjFvriT7Qoll2qDMDNzt-qHCqIfchyVQIIVh6RehRyruGU6";
 
 Future<Artist> getArtist(int id) async {
-  final response = await http.get(Uri.parse('https://api.genius.com/artists/$id?access_token=$access'));
+  final response = await http.get(
+      Uri.parse('https://api.genius.com/artists/$id?access_token=$access'));
   var data = jsonDecode(response.body);
-  if(data["response"] == null){
+  if (data["response"] == null) {
     return const Artist(-1, "a", "a");
   }
   var required = data['response']['artist'];
@@ -32,8 +33,7 @@ Future<List<String>> getLyrics(int songId) async {
   Song toGet = await getSong(songId);
   String url = toGet.url;
 
-  var response = await http.Client()
-      .get(Uri.parse(url));
+  var response = await http.Client().get(Uri.parse(url));
   var document = parse(response.body);
   var elements = document
       .getElementsByClassName("SongPage__LyricsWrapper-sc-19xhmoi-5 UKjRP");
@@ -41,7 +41,8 @@ Future<List<String>> getLyrics(int songId) async {
   List<String> lyrics = [];
   lyrics.add("[Verse 1]");
   for (var e in elements) {
-    var p = parse(e.outerHtml.replaceAll('<br>', '</p><p>')).querySelectorAll('p');
+    var p =
+        parse(e.outerHtml.replaceAll('<br>', '</p><p>')).querySelectorAll('p');
     if (p.isNotEmpty) {
       for (var f in p) {
         if (f.text != '') {
@@ -53,12 +54,11 @@ Future<List<String>> getLyrics(int songId) async {
   return lyrics;
 }
 
-Future<List<Song>> getSongs(int artistId) async{
-
-  final response1 = await http.get(
-      Uri.parse('https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=1&access_token=$access'));
-  final response2 = await http.get(
-      Uri.parse('https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=2&access_token=$access'));
+Future<List<Song>> getSongs(int artistId) async {
+  final response1 = await http.get(Uri.parse(
+      'https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=1&access_token=$access'));
+  final response2 = await http.get(Uri.parse(
+      'https://api.genius.com/artists/$artistId/songs?per_page=50&sort=popularity&page=2&access_token=$access'));
 
   var data1 = jsonDecode(response1.body);
   var data2 = jsonDecode(response2.body);
@@ -67,10 +67,10 @@ Future<List<Song>> getSongs(int artistId) async{
   var songs2 = data2['response']['songs'] as List;
 
   List<Song> songs = [];
-  for(var json in songs1){
+  for (var json in songs1) {
     songs.add(Song.fromJson(json));
   }
-  for(var json in songs2){
+  for (var json in songs2) {
     songs.add(Song.fromJson(json));
   }
 

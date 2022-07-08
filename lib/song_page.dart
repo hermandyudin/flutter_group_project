@@ -39,7 +39,7 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
     checkConnection(() {}, context);
 
     controller =
-        AnimationController(vsync:this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: Duration(seconds: 5));
 
     offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
         .animate(controller);
@@ -81,7 +81,8 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                             padding: EdgeInsets.all(20),
                             child: TextFormField(
                                 initialValue: searchText,
-                                style: const TextStyle(color: CustomColors.green),
+                                style:
+                                    const TextStyle(color: CustomColors.green),
                                 decoration: InputDecoration(
                                   hintText: 'Search '.tr,
                                   hintStyle: const TextStyle(
@@ -107,21 +108,25 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                                 })),
                         Expanded(
                             child: ListView.builder(
-                                padding:
-                                const EdgeInsets.only(top: 40, left: 8, right: 8),
+                                padding: const EdgeInsets.only(
+                                    top: 40, left: 8, right: 8),
                                 itemCount: filteredList.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   final alreadySaved =
-                                  savedSongs.contains(filteredList[index]);
+                                      savedSongs.contains(filteredList[index]);
                                   return GestureDetector(
                                       onTap: () {
                                         int songId = filteredList[index].id;
                                         Navigator.push(
-                                            context, SlideRightRoute(widget: LyricsStateful(id: songId)));
+                                            context,
+                                            SlideRightRoute(
+                                                widget: LyricsStateful(
+                                                    id: songId)));
                                       },
                                       child: Card(
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(15.0),
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
                                           ),
                                           color: CustomColors.green,
                                           elevation: 10,
@@ -133,63 +138,76 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                                                   right: 15),
                                               child: Row(children: [
                                                 Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        right: 15),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 15),
                                                     child: IconButton(
                                                         icon: Icon(
                                                           alreadySaved
                                                               ? Icons.favorite
-                                                              : Icons.favorite_border,
+                                                              : Icons
+                                                                  .favorite_border,
                                                           color: alreadySaved
-                                                              ? CustomColors.white
+                                                              ? CustomColors
+                                                                  .white
                                                               : null,
-                                                          semanticLabel: alreadySaved
-                                                              ? 'Remove from saved'
-                                                              : 'Save',
+                                                          semanticLabel:
+                                                              alreadySaved
+                                                                  ? 'Remove from saved'
+                                                                  : 'Save',
                                                         ),
                                                         onPressed: () {
                                                           setState(() {
                                                             if (alreadySaved) {
                                                               savedSongs.remove(
                                                                   filteredList[
-                                                                  index]);
+                                                                      index]);
                                                             } else {
                                                               savedSongs.add(
                                                                   filteredList[
-                                                                  index]);
+                                                                      index]);
                                                             }
                                                           });
                                                         })),
                                                 Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        right: 15),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 15),
                                                     child: CircleAvatar(
-                                                      radius: 20, // Image radius
-                                                      backgroundImage: NetworkImage(
-                                                          filteredList[index]
-                                                              .imageUrl),
+                                                      radius:
+                                                          20, // Image radius
+                                                      backgroundImage:
+                                                          NetworkImage(
+                                                              filteredList[
+                                                                      index]
+                                                                  .imageUrl),
                                                     )),
                                                 Flexible(
                                                     child: Column(
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
-                                                          Padding(
-                                                              padding:
-                                                              const EdgeInsets.only(
+                                                      Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
                                                                   bottom: 5),
-                                                              child: Text(
-                                                                  filteredList[index]
-                                                                      .title,
-                                                                  style: const TextStyle(
-                                                                      fontSize: 17))),
-                                                          Text(
-                                                            filteredList[index]
-                                                                .artistNames,
-                                                            style: const TextStyle(
-                                                                fontSize: 10),
-                                                          )
-                                                        ])),
+                                                          child: Text(
+                                                              filteredList[
+                                                                      index]
+                                                                  .title,
+                                                              style:
+                                                                  const TextStyle(
+                                                                      fontSize:
+                                                                          17))),
+                                                      Text(
+                                                        filteredList[index]
+                                                            .artistNames,
+                                                        style: const TextStyle(
+                                                            fontSize: 10),
+                                                      )
+                                                    ])),
                                               ]))));
                                 })),
                       ])));
@@ -208,8 +226,8 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
         .toList();
   }
 
-  void _onChanged(String inputString, List<Song> songs){
+  void _onChanged(String inputString, List<Song> songs) {
     _filter(inputString, songs);
-    setState((){});
+    setState(() {});
   }
 }
