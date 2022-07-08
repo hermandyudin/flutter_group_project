@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/lyrics_page.dart';
 import 'package:flutter_group_project/parsing.dart';
@@ -11,9 +10,9 @@ import 'classes/song.dart';
 import 'main.dart';
 
 class SongStateful extends StatefulWidget {
-  int id;
+  final int id;
 
-  SongStateful({Key? key, required this.id}) : super(key: key);
+  const SongStateful({Key? key, required this.id}) : super(key: key);
 
   @override
   State<SongStateful> createState() => SongPage(id);
@@ -39,9 +38,9 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
     checkConnection(() {}, context);
 
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
 
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+    offset = Tween<Offset>(begin: Offset.zero, end: const Offset(0.0, 1.0))
         .animate(controller);
   }
 
@@ -78,7 +77,7 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                       },
                       child: Column(children: <Widget>[
                         Padding(
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             child: TextFormField(
                                 initialValue: searchText,
                                 style:

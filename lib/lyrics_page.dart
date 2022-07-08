@@ -8,9 +8,9 @@ import 'check_connection_methods.dart';
 List<String> lyrics = [];
 
 class LyricsStateful extends StatefulWidget {
-  int id;
+  final int id;
 
-  LyricsStateful({Key? key, required this.id}) : super(key: key);
+  const LyricsStateful({Key? key, required this.id}) : super(key: key);
 
   @override
   State<LyricsStateful> createState() => LyricsPage(id);

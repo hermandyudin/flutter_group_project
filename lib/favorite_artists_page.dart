@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'main.dart';
 
 class FavoriteArtistsStateful extends StatefulWidget {
-  FavoriteArtistsStateful({Key? key}) : super(key: key);
+  const FavoriteArtistsStateful({Key? key}) : super(key: key);
 
   @override
   State<FavoriteArtistsStateful> createState() => FavoriteArtists();
@@ -119,7 +119,7 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
                                               backgroundImage: NetworkImage(
                                                   filteredList[index].imageUrl),
                                             )),
-                                        Container(
+                                        SizedBox(
                                           width: 200,
                                           child: Flexible(
                                               child: Text(
@@ -146,6 +146,7 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
     setState(() {});
   }
 
+  @override
   void initState() {
     super.initState();
     filteredList = savedArtists;

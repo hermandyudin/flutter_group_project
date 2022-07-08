@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:flutter_group_project/theme/theme.dart';
 import 'package:get/get.dart';
@@ -7,8 +6,6 @@ import 'artist_page.dart';
 import 'classes/artist.dart';
 import 'classes/song.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'favorite_artists_page.dart';
-import 'favorite_songs_page.dart';
 import 'favorite_page.dart';
 import 'localization.dart';
 
@@ -43,7 +40,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Genius App',
       theme: isDark ? CustomTheme.darkTheme : CustomTheme.lightTheme,
-      locale: isEnglish ? Locale("en", "US") : Locale("ru", "RU"),
+      locale: isEnglish ? const Locale("en", "US") : const Locale("ru", "RU"),
       translations: Messages(),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -76,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _changeLanguage() {
     if (isEnglish) {
-      var locale = Locale('ru', 'Ru');
+      var locale = const Locale('ru', 'Ru');
       prefs.setBool('isEnglish', false);
       Get.updateLocale(locale);
       isEnglish = false;
     } else {
-      var locale = Locale('en', 'US');
+      var locale = const Locale('en', 'US');
       prefs.setBool('isEnglish', true);
       Get.updateLocale(locale);
       isEnglish = true;

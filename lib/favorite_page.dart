@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_group_project/favorite_artists_page.dart';
 import 'package:flutter_group_project/slide_right_route.dart';
-import 'package:flutter_group_project/song_page.dart';
 import 'package:flutter_group_project/theme/colors.dart';
 import 'package:get/get.dart';
 
 import 'favorite_songs_page.dart';
-import 'main.dart';
 
 class FavoriteNewStateful extends StatefulWidget {
   const FavoriteNewStateful({Key? key}) : super(key: key);
@@ -25,9 +23,9 @@ class FavoriteNew extends State<FavoriteNewStateful>
     super.initState();
 
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
 
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+    offset = Tween<Offset>(begin: Offset.zero, end: const Offset(0.0, 1.0))
         .animate(controller);
   }
 
@@ -47,8 +45,10 @@ class FavoriteNew extends State<FavoriteNewStateful>
                           minimumSize: Size((width - 30) / 2, 800),
                           maximumSize: Size((width - 30) / 2, 800),
                           primary: CustomColors.green),
-                      onPressed: () => Navigator.push(context,
-                          SlideRightRoute(widget: FavoriteArtistsStateful())),
+                      onPressed: () => Navigator.push(
+                          context,
+                          SlideRightRoute(
+                              widget: const FavoriteArtistsStateful())),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

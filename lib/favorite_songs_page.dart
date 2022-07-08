@@ -6,7 +6,7 @@ import 'lyrics_page.dart';
 import 'main.dart';
 
 class FavoriteSongsStateful extends StatefulWidget {
-  FavoriteSongsStateful({Key? key}) : super(key: key);
+  const FavoriteSongsStateful({Key? key}) : super(key: key);
 
   @override
   State<FavoriteSongsStateful> createState() => FavoriteSongs();
@@ -119,7 +119,7 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
                                               backgroundImage: NetworkImage(
                                                   filteredList[index].imageUrl),
                                             )),
-                                        Container(
+                                        SizedBox(
                                           width: 200,
                                           child: Flexible(
                                               child: Text(
@@ -146,6 +146,7 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
     setState(() {});
   }
 
+  @override
   void initState() {
     super.initState();
     filteredList = savedSongs;

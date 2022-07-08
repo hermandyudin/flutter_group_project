@@ -29,9 +29,9 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
     checkConnection(downloadData, context);
 
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
 
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+    offset = Tween<Offset>(begin: Offset.zero, end: const Offset(0.0, 1.0))
         .animate(controller);
   }
 
@@ -58,15 +58,15 @@ class ArtistPage extends State<ArtistStateful> with TickerProviderStateMixin {
                           fontSize: 16,
                           color: CustomColors.green,
                         ),
-                        enabledBorder: OutlineInputBorder(
+                        enabledBorder: const OutlineInputBorder(
                           borderSide:
                               BorderSide(color: CustomColors.green, width: 3.0),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide:
                               BorderSide(color: CustomColors.white, width: 1.0),
                         ),
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.search,
                           color: CustomColors.green,
                         ),
