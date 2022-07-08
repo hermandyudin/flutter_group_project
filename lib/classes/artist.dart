@@ -7,10 +7,7 @@ class Artist {
 
   factory Artist.fromJson(Map<String, dynamic> json) {
     return Artist(
-      json['id'] as int,
-      json['name'] as String,
-      json['image_url'] as String
-    );
+        json['id'] as int, json['name'] as String, json['image_url'] as String);
   }
 
   @override

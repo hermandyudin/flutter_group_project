@@ -122,10 +122,11 @@ class FavoriteArtists extends State<FavoriteArtistsStateful> {
                                         Container(
                                           width: 200,
                                           child: Flexible(
-                                            child: Text(
-                                                filteredList[index].name,
-                                                style: const TextStyle(
-                                                    fontSize: 17))),)
+                                              child: Text(
+                                                  filteredList[index].name,
+                                                  style: const TextStyle(
+                                                      fontSize: 17))),
+                                        )
                                       ],
                                     ),
                                     IconButton(

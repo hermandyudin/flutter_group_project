@@ -65,11 +65,11 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
                     ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide:
-                      BorderSide(color: CustomColors.green, width: 3.0),
+                          BorderSide(color: CustomColors.green, width: 3.0),
                     ),
                     focusedBorder: const OutlineInputBorder(
                       borderSide:
-                      BorderSide(color: CustomColors.white, width: 1.0),
+                          BorderSide(color: CustomColors.white, width: 1.0),
                     ),
                     prefixIcon: const Icon(
                       Icons.search,
@@ -82,60 +82,60 @@ class FavoriteSongs extends State<FavoriteSongsStateful> {
                   })),
           Expanded(
               child: AnimatedList(
-                key: _key,
-                initialItemCount: filteredList.length,
-                padding: const EdgeInsets.all(8),
-                itemBuilder: (_, index, animation) {
-                  return SizeTransition(
-                      key: UniqueKey(),
-                      sizeFactor: animation,
-                      child: GestureDetector(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      LyricsStateful(
-                                          id: filteredList[index].id))),
-                          child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              color: CustomColors.green,
-                              elevation: 10,
-                              child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, top: 15, bottom: 15, right: 15),
-                                  child: Row(
-                                      mainAxisAlignment:
+            key: _key,
+            initialItemCount: filteredList.length,
+            padding: const EdgeInsets.all(8),
+            itemBuilder: (_, index, animation) {
+              return SizeTransition(
+                  key: UniqueKey(),
+                  sizeFactor: animation,
+                  child: GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  LyricsStateful(id: filteredList[index].id))),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          color: CustomColors.green,
+                          elevation: 10,
+                          child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20, top: 15, bottom: 15, right: 15),
+                              child: Row(
+                                  mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 15),
-                                                child: CircleAvatar(
-                                                  radius: 20, // Image radius
-                                                  backgroundImage: NetworkImage(
-                                                      filteredList[index].imageUrl),
-                                                )),
-                                            Container(
-                                              width: 200,
-                                              child: Flexible(
-                                                child: Text(
-                                                    filteredList[index].title,
-                                                    style: const TextStyle(
-                                                        fontSize: 17))),)
-                                          ],
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(Icons.delete),
-                                          onPressed: () => _removeItem(index),
-                                        ),
-                                      ])))));
-                },
-              ))
+                                        Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 15),
+                                            child: CircleAvatar(
+                                              radius: 20, // Image radius
+                                              backgroundImage: NetworkImage(
+                                                  filteredList[index].imageUrl),
+                                            )),
+                                        Container(
+                                          width: 200,
+                                          child: Flexible(
+                                              child: Text(
+                                                  filteredList[index].title,
+                                                  style: const TextStyle(
+                                                      fontSize: 17))),
+                                        )
+                                      ],
+                                    ),
+                                    IconButton(
+                                      icon: const Icon(Icons.delete),
+                                      onPressed: () => _removeItem(index),
+                                    ),
+                                  ])))));
+            },
+          ))
         ]));
   }
 
