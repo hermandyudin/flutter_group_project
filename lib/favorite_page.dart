@@ -37,52 +37,49 @@ class FavoriteNew extends State<FavoriteNewStateful>
         child: Padding(
             padding:
                 const EdgeInsets.only(left: 10, top: 15, bottom: 15, right: 15),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size((width - 30) / 2, 800),
-                          maximumSize: Size((width - 30) / 2, 800),
-                          primary: CustomColors.green),
-                      onPressed: () => Navigator.push(
-                          context,
-                          SlideRightRoute(
-                              widget: const FavoriteArtistsStateful())),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 40,
-                            ),
-                            Text("Artists".tr,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 17, color: Colors.black)),
-                          ])),
-                  const Spacer(),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size((width - 30) / 2, 800),
-                          maximumSize: Size((width - 30) / 2, 800),
-                          primary: CustomColors.green),
-                      onPressed: () => Navigator.push(context,
-                          SlideRightRoute(widget: FavoriteSongsStateful())),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.music_note,
-                              color: Colors.black,
-                              size: 40,
-                            ),
-                            Text("Songs".tr,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 17, color: Colors.black)),
-                          ])),
-                ])));
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                Widget>[
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size((width - 30) / 2, 800),
+                      maximumSize: Size((width - 30) / 2, 800),
+                      primary: CustomColors.green),
+                  onPressed: () => Navigator.push(context,
+                      SlideRightRoute(widget: const FavoriteArtistsStateful())),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.person,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                        Text("Artists".tr,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 17, color: Colors.black)),
+                      ])),
+              const Spacer(),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size((width - 30) / 2, 800),
+                      maximumSize: Size((width - 30) / 2, 800),
+                      primary: CustomColors.green),
+                  onPressed: () => Navigator.push(context,
+                      SlideRightRoute(widget: const FavoriteSongsStateful())),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.music_note,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                        Text("Songs".tr,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 17, color: Colors.black)),
+                      ])),
+            ])));
   }
 }
