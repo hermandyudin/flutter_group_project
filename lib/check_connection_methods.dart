@@ -27,7 +27,7 @@ void buildDialog(BuildContext context) {
 }
 
 void checkConnection(Function refreshData, BuildContext context) async {
-  if(kIsWeb){
+  if (kIsWeb) {
     refreshData();
     return;
   }
