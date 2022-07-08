@@ -67,4 +67,4 @@ jobs:
     # Build apk.
     - run: 
           flutter build ios
-          -release -no-codesign
+          --release --no-codesign
