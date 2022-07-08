@@ -77,6 +77,8 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                         checkConnection(() {}, context);
                         return Future<void>.delayed(const Duration(seconds: 1));
                       },
+                      child: Card(
+                        color: isDark ? CustomColors.black : CustomColors.white,
                       child: Column(children: <Widget>[
                         Padding(
                             padding: const EdgeInsets.all(20),
@@ -108,7 +110,9 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                                   _onChanged(searchText, snapshot.data);
                                 })),
                         Expanded(
-                            child: ListView.builder(
+                            child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                child: ListView.builder(
                                 padding: const EdgeInsets.only(
                                     top: 40, left: 8, right: 8),
                                 itemCount: filteredList.length,
@@ -210,8 +214,8 @@ class SongPage extends State<SongStateful> with TickerProviderStateMixin {
                                                       )
                                                     ])),
                                               ]))));
-                                })),
-                      ])));
+                                }))),
+                      ]))));
             } else {
               return const Center(
                 child: CircularProgressIndicator(),
