@@ -14,16 +14,4 @@ void main() {
     // Verify that our counter starts at 0.
     expect(true, true);
   });
-
-  var artistPage = ArtistPage();
-  test('testing if checking already saved artists work properly', () async {
-    var isTrue = artists.length;
-    expect(isTrue, 0);
-  });
-
-  artistPage.downloadData();
-  test('testing if checking already saved artists work properly', () async {
-    var isTrue = artists.length;
-    expect(isTrue, 0);
-  });
 }

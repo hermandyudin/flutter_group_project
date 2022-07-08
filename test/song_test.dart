@@ -35,29 +35,18 @@ void main() {
   var numberBiggerThan16775 = 16775 + Random().nextInt(1300);
 
   test('test 3', () async {
-    var artist = getArtist(numberBiggerThan16775);
-    String artistName = (await artist).name;
-
-    final songs = await getSongs(numberBiggerThan16775);
-    var song = songs[0];
-    String artistNames = song.artistNames;
-
-    expect(artistNames.contains(artistName), true);
-  });
-
-  test('test 4', () async {
     final songs = await getSongs(numberBiggerThan16775);
     expect(songs.length, isNotNaN);
   });
 
-  test('test 5', () async {
+  test('test 4', () async {
     final songs = await getSongs(numberBiggerThan16775);
     var songInList = songs[0];
-    var songFromGetter = getSong(songs[0].id);
+    var songFromGetter = await getSong(songs[0].id);
     expect(songInList, songFromGetter);
   });
 
-  test('test 6', () async {
+  test('test 5', () async {
     final songs = await getSongs(numberBiggerThan16775);
     var songInList = songs[0];
     var lyrics = getLyrics(songInList.id);
