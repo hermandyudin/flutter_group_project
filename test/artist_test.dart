@@ -34,7 +34,7 @@ void main() {
 
   var numberLessThan16775 = Random().nextInt(16774);
   test('test 3', () async {
-    final artist = await getArtist(16774);
+    final artist = await getArtist(numberLessThan16775);
 
     expect(artist.id, -1);
     expect(artist.name, "a");
