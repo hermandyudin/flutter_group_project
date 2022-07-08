@@ -44,7 +44,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.1c
+  flutter_lints: ^2.0.1
   internet_connection_checker: ^0.0.1
   dio: ^4.0.6
   http: 0.13.4
