@@ -7,7 +7,7 @@ import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('test 1', () {
+  test('test constructor of song model', () {
     const song =
         Song(1, 16800, 'title', 'names of artists', 'url of image', 'url');
 
@@ -19,7 +19,7 @@ void main() {
     expect(song.url, 'url');
   });
 
-  test('test 2', () {
+  test('test getting from json', () {
     final file =
         File('test/test_resources/random_song.json').readAsStringSync();
     final song = Song.fromJson(jsonDecode(file) as Map<String, dynamic>);
@@ -33,7 +33,7 @@ void main() {
   });
 
   var numberBiggerThan16775 = 16775 + Random().nextInt(1300);
-  test('test 3', () async {
+  test('test getting the list of songs using artistId', () async {
     while ((await getArtist(numberBiggerThan16775)).id == -1) {
       numberBiggerThan16775 = 16755 + Random().nextInt(1300);
     }
@@ -42,7 +42,8 @@ void main() {
     expect(songs.length, isNotNaN);
   });
 
-  test('test 4', () async {
+  test('test getting a song using Id by comparing it with song from the list',
+      () async {
     while ((await getArtist(numberBiggerThan16775)).id == -1) {
       numberBiggerThan16775 = 16755 + Random().nextInt(1300);
     }
@@ -52,7 +53,7 @@ void main() {
     expect(songInList, songFromGetter);
   });
 
-  test('test 5', () async {
+  test('test getting the lyrics using song id', () async {
     while ((await getArtist(numberBiggerThan16775)).id == -1) {
       numberBiggerThan16775 = 16755 + Random().nextInt(1300);
     }

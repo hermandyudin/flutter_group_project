@@ -7,7 +7,7 @@ import 'package:flutter_group_project/parsing.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('test 1', () {
+  test('test constructor of artist model', () {
     const artist = Artist(
       1,
       'name',
@@ -19,7 +19,7 @@ void main() {
     expect(artist.imageUrl, 'image url');
   });
 
-  test('test 2', () {
+  test('test getting from json', () {
     final file =
         File('test/test_resources/random_artist.json').readAsStringSync();
     final artist = Artist.fromJson(jsonDecode(file) as Map<String, dynamic>);
@@ -32,18 +32,9 @@ void main() {
     );
   });
 
-  var numberLessThan16775 = Random().nextInt(16774);
-  test('test 3', () async {
-    final artist = await getArtist(numberLessThan16775);
-
-    expect(artist.id, -1);
-    expect(artist.name, "a");
-    expect(artist.imageUrl, 'a');
-  });
-
   var numberBiggerThan16774 = 16775 + Random().nextInt(1300);
 
-  test('test 4', () async {
+  test('test getting the artist by using id', () async {
     final artist = await getArtist(numberBiggerThan16774);
     var idOfArtist = -1;
     if (artist.name != "a") {
